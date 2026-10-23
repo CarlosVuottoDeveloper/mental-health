@@ -45,3 +45,18 @@ public/           # arquivos estáticos
 ```
 
 Testes ficam em arquivos `*.test.ts(x)`, próximos ao código ou em pastas `__tests__/`.
+
+## Git hooks
+
+Configurados com [Husky](https://typicode.github.io/husky) e [lint-staged](https://github.com/lint-staged/lint-staged), instalados automaticamente no `npm install` (script `prepare`):
+
+- **pre-commit**: roda `eslint --fix` e `prettier --write` apenas nos arquivos em stage.
+- **pre-push**: roda `npm run typecheck` e `npm run test:run`.
+
+## Fluxo de branches (Gitflow)
+
+- `main`: código em produção; recebe merges apenas de `release/*` e `hotfix/*`.
+- `develop`: branch de integração; base para novas features.
+- `feature/<nome>`: criada a partir de `develop` e mesclada de volta com `--no-ff`.
+- `release/<versão>`: criada a partir de `develop`, mesclada em `main` (com tag) e em `develop`.
+- `hotfix/<nome>`: criada a partir de `main`, mesclada em `main` (com tag) e em `develop`.
