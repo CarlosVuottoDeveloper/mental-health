@@ -1,0 +1,49 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+import { DoDont } from "./doc-blocks";
+
+<Meta title="Design System/Voz e conteúdo" />
+
+# Voz e conteúdo
+
+Falamos com pessoas que podem estar em um momento difícil. A voz é **acolhedora, direta e sem
+promessas exageradas**.
+
+## Diretrizes
+
+- **Português do Brasil, segunda pessoa ("você").** Frases curtas, voz ativa.
+- **Botões dizem exatamente o que acontece:** "Agendar sessão", "Falar com a equipe". Evite
+  "Saiba mais" e "Enviar".
+- **Mesma ação, mesmo nome:** se o botão diz "Agendar sessão", a confirmação diz "Sessão agendada".
+- **Sem jargão clínico** desnecessário e sem diagnósticos. Prefira "ansiedade no trabalho" a
+  "transtorno de ansiedade generalizada".
+- **Segurança em primeiro lugar:** conteúdo sobre crise sempre indica o **CVV (188)** e o
+  atendimento de emergência, e deixa claro que o serviço não substitui emergência.
+
+<Unstyled>
+  <DoDont
+    doo={
+      <>
+        “Sessões online por vídeo, de onde você estiver.”
+        <br />
+        “Agendar sessão”
+      </>
+    }
+    dont={
+      <>
+        “Transforme sua vida em 7 dias!”
+        <br />
+        “Clique aqui”
+      </>
+    }
+  />
+</Unstyled>
+
+## Microcopy de componentes
+
+| Componente     | Padrão                                                       |
+| -------------- | ------------------------------------------------------------ |
+| `Button`       | Verbo no infinitivo + objeto: "Agendar sessão"               |
+| `SectionLabel` | Substantivo curto que nomeia a seção: "Sobre nós", "Dúvidas" |
+| `Badge` (hero) | Frase curta de boas-vindas, sem ponto final                  |
+| Accordion      | Pergunta como a pessoa faria; resposta começa respondendo    |
+| `IconButton`   | `label` descreve a ação: "Próximo depoimento", "Abrir menu"  |

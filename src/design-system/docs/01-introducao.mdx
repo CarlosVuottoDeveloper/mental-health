@@ -1,0 +1,46 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/Introdução" />
+
+# Design System
+
+Base visual e de componentes da landing page de saúde mental, derivada da referência em
+`docs/references/example.webp`.
+
+## Princípios
+
+1. **Calma antes de chamar atenção.** Fundo creme quente, muito respiro e tipografia serifada
+   condensada criam um ritmo lento. Nada pisca, nada compete.
+2. **Um único ponto de energia.** O verde-limão (`accent`) aparece só na ação mais importante de cada
+   área visível e em pequenos sinais de estado (estrelas, item aberto). Se tudo é limão, nada é.
+3. **Contraste por tom, não por sombra.** A hierarquia vem da alternância creme ↔ oliva-escuro
+   (`background` ↔ `inverse`), não de elevação. O sistema não usa sombras.
+4. **Formas orgânicas, grade firme.** Pílulas e círculos suavizam as fotos e os botões; a borda
+   pixelada (`PixelBand`) é o único gesto geométrico e aparece uma vez por página.
+5. **Acessível por padrão.** Todo par de cores documentado tem contraste verificado em teste
+   automatizado, os controles têm foco visível e os componentes interativos usam Radix.
+
+## Como usar
+
+```tsx
+import { Button, Heading, Text } from "@/components/ui";
+import { Hero, FaqSection } from "@/components/sections";
+```
+
+- **Tokens** ficam em `src/styles/tokens.css` (fonte da verdade) e viram utilitários do Tailwind:
+  `bg-background`, `text-foreground-muted`, `bg-accent`, `text-display-lg`, `rounded-pill`…
+- Use sempre os **tokens semânticos** nos componentes. As cores primitivas (`ink-900`, `lime-400`)
+  existem para compor os semânticos e para casos de exceção documentados.
+- `src/design-system/tokens.ts` espelha os tokens em TypeScript para documentação; o teste
+  `tokens.test.ts` falha se os dois arquivos divergirem.
+- Combine classes com `cn()` (`src/lib/cn.ts`), que já conhece os tamanhos de texto customizados.
+
+## Estrutura
+
+| Pasta                        | Conteúdo                                                 |
+| ---------------------------- | -------------------------------------------------------- |
+| `src/styles/tokens.css`      | Tokens de cor, tipografia, raio, layout e movimento      |
+| `src/components/ui`          | Componentes base (Button, Accordion, Tabs, MediaShape…)  |
+| `src/components/sections`    | Seções prontas da landing page (Hero, FAQ, CTA, Rodapé…) |
+| `src/design-system/docs`     | Este styleguide                                          |
+| `src/design-system/examples` | Conteúdo de exemplo e composição completa da página      |
