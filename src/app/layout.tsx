@@ -13,7 +13,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${fontVariables} h-full`}>
+    <html
+      lang="pt-BR"
+      // Next 16 only disables smooth scrolling during route changes with this flag.
+      data-scroll-behavior="smooth"
+      className={`${fontVariables} h-full`}
+    >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );

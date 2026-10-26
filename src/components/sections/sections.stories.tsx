@@ -33,7 +33,9 @@ export const HeroSection: Story = {
   render: () => (
     <Hero
       {...heroContent}
-      header={<SiteHeader {...headerContent} tone="inverse" />}
+      header={
+        <SiteHeader {...headerContent} overlayTargetId={heroContent.id} />
+      }
     />
   ),
 };

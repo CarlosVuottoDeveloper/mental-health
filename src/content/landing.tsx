@@ -21,6 +21,8 @@ import { whatsappUrl } from "@/lib/whatsapp";
 
 // Section anchors, shared by the navigation and the sections themselves.
 export const anchors = {
+  hero: "inicio",
+  main: "conteudo",
   about: "sobre",
   care: "como-funciona",
   faq: "duvidas",
@@ -47,16 +49,17 @@ export const whatsappHref = whatsappUrl(
 
 export const headerContent: Omit<SiteHeaderProps, "tone"> = {
   links: [
-    { label: "Sobre", href: `#${anchors.about}` },
-    { label: "Como funciona", href: `#${anchors.care}` },
-    { label: "Dúvidas", href: `#${anchors.faq}` },
-    { label: "Agendamento", href: `#${anchors.booking}` },
+    { label: "Sobre", href: `/#${anchors.about}` },
+    { label: "Como funciona", href: `/#${anchors.care}` },
+    { label: "Dúvidas", href: `/#${anchors.faq}` },
+    { label: "Agendamento", href: `/#${anchors.booking}` },
   ],
   contact: { label: "Agendar pelo WhatsApp", href: whatsappHref },
 };
 
 // LPC-9 (copy approved in the briefing).
 export const heroContent: Omit<HeroProps, "header"> = {
+  id: anchors.hero,
   badge: "Psiquiatria para adultos",
   title: "Acompanhamento psiquiátrico para quem está pronto para pedir ajuda",
   description:
@@ -64,7 +67,7 @@ export const heroContent: Omit<HeroProps, "header"> = {
   cta: { label: "Agendar pelo WhatsApp", href: whatsappHref },
   secondaryCta: {
     label: "Conhecer o atendimento",
-    href: `#${anchors.about}`,
+    href: `/#${anchors.about}`,
   },
   credentials: credentialsLine,
 };
@@ -92,7 +95,7 @@ export const aboutContent: AboutSectionProps = {
   ],
   cta: {
     label: "Como funciona o acompanhamento",
-    href: `#${anchors.care}`,
+    href: `/#${anchors.care}`,
   },
   media: [
     { placeholder: "sun" },

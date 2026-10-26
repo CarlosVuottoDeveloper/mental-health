@@ -9,6 +9,7 @@ import {
 } from "@/components/sections";
 import {
   aboutContent,
+  anchors,
   careStepsContent,
   ctaContent,
   faqContent,
@@ -19,17 +20,20 @@ import {
 
 /**
  * The landing page: implemented sections in the order defined in LPC-3.
- * Used by `src/app/page.tsx` and by Storybook. Especialidades, benefícios and
- * localização are still to be built (see docs/planning).
+ * Used by `src/app/page.tsx` and by Storybook.
  */
 export function LandingPage() {
   return (
     <>
-      <Hero
-        {...heroContent}
-        header={<SiteHeader {...headerContent} tone="inverse" />}
-      />
-      <main>
+      <a
+        href={`#${anchors.main}`}
+        className="sr-only z-50 rounded-pill bg-accent px-5 py-3 text-label font-medium text-accent-foreground uppercase focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+      >
+        Pular para o conteúdo
+      </a>
+      <SiteHeader {...headerContent} fixed overlayTargetId={anchors.hero} />
+      <main id={anchors.main}>
+        <Hero {...heroContent} />
         <AboutSection {...aboutContent} />
         <CareStepsSection {...careStepsContent} />
         <FaqSection {...faqContent} />
