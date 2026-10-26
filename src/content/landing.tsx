@@ -37,7 +37,7 @@ export const professional = {
 
 export const credentialsLine = `${professional.name} · ${professional.specialty} · ${professional.crm} · ${professional.rqe}`;
 
-// LPC-18: the number will come from an environment variable (LPC-7).
+// LPC-18: the number will come from an environment variable (.env.local, decision D11).
 // Message combines LPC-1 and LPC-18 (decision D5 in docs/discovery/decisoes-do-projeto.md).
 const whatsappNumber = "5511900000000";
 export const whatsappHref = whatsappUrl(
