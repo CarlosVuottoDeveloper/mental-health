@@ -114,8 +114,8 @@ export function SiteHeader({
           <Logo tone={overlay ? "inverse" : "default"} />
         </Link>
 
-        <nav aria-label="Principal" className="hidden md:block">
-          <ul className="flex items-center gap-8 text-label uppercase">
+        <nav aria-label="Principal" className="hidden xl:block">
+          <ul className="flex items-center gap-7 text-label uppercase">
             {links.map((link) => (
               <li key={link.href}>
                 <a
@@ -135,7 +135,7 @@ export function SiteHeader({
           size="sm"
           asChild
           className={cn(
-            "hidden md:inline-flex",
+            "hidden xl:inline-flex",
             overlay && "focus-visible:outline-ring-inverse",
           )}
         >
@@ -151,7 +151,7 @@ export function SiteHeader({
           aria-expanded={open}
           aria-controls="site-menu"
           variant={overlay ? "inverse-outline" : "soft"}
-          className="md:hidden"
+          className="xl:hidden"
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X /> : <Menu />}
@@ -159,7 +159,7 @@ export function SiteHeader({
       </Container>
 
       {open && (
-        <nav id="site-menu" aria-label="Principal" className="pb-4 md:hidden">
+        <nav id="site-menu" aria-label="Principal" className="pb-4 xl:hidden">
           <Container>
             <ul
               className={cn(

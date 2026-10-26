@@ -7,6 +7,7 @@ import {
   footerContent,
   headerContent,
   heroContent,
+  specialtiesContent,
 } from "@/content/landing";
 import { AboutSection } from "./about-section";
 import { CareStepsSection } from "./care-steps-section";
@@ -15,6 +16,7 @@ import { FaqSection } from "./faq-section";
 import { Hero } from "./hero";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
+import { SpecialtiesSection } from "./specialties-section";
 
 const meta = {
   title: "Seções",
@@ -43,6 +45,11 @@ export const HeroSection: Story = {
 export const About: Story = {
   name: "Sobre",
   render: () => <AboutSection {...aboutContent} />,
+};
+
+export const Specialties: Story = {
+  name: "Especialidades",
+  render: () => <SpecialtiesSection {...specialtiesContent} />,
 };
 
 export const CareSteps: Story = {
