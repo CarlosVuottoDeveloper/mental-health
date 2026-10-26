@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import {
   aboutContent,
+  benefitsContent,
   careStepsContent,
   ctaContent,
   faqContent,
@@ -10,6 +11,7 @@ import {
   specialtiesContent,
 } from "@/content/landing";
 import { AboutSection } from "./about-section";
+import { BenefitsSection } from "./benefits-section";
 import { CareStepsSection } from "./care-steps-section";
 import { CtaBanner } from "./cta-banner";
 import { FaqSection } from "./faq-section";
@@ -50,6 +52,11 @@ export const About: Story = {
 export const Specialties: Story = {
   name: "Especialidades",
   render: () => <SpecialtiesSection {...specialtiesContent} />,
+};
+
+export const Benefits: Story = {
+  name: "Atendimento (benefícios)",
+  render: () => <BenefitsSection {...benefitsContent} />,
 };
 
 export const CareSteps: Story = {

@@ -1,4 +1,5 @@
 export * from "./about-section";
+export * from "./benefits-section";
 export * from "./care-steps-section";
 export * from "./cta-banner";
 export * from "./faq-section";
