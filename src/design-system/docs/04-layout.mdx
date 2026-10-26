@@ -1,0 +1,50 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+import { RadiusScale, SpacingScale } from "./doc-blocks";
+
+<Meta title="Design System/Layout e forma" />
+
+# Layout e forma
+
+## Grade e container
+
+| Token               | Valor                 | Utilitário   | Uso                           |
+| ------------------- | --------------------- | ------------ | ----------------------------- |
+| `--container-page`  | `80rem` (1280px)      | `max-w-page` | Largura máxima do conteúdo    |
+| `--spacing-gutter`  | `clamp(16px … 40px)`  | `px-gutter`  | Margem lateral responsiva     |
+| `--spacing-section` | `clamp(64px … 128px)` | `py-section` | Respiro vertical entre seções |
+
+Use o componente `Container`, que já aplica `max-w-page` e `px-gutter`. Seções de texto mais
+focadas (FAQ) estreitam o container com `max-w-3xl`.
+
+**Composição assimétrica:** as seções de conteúdo usam uma grade `1fr 2fr` em telas médias, com o
+rótulo da seção à esquerda e o conteúdo à direita. Em telas pequenas tudo empilha em uma coluna.
+
+## Espaçamento
+
+Escala padrão do Tailwind (base 4px). Prefira os passos abaixo para manter o ritmo.
+
+<Unstyled>
+  <SpacingScale />
+</Unstyled>
+
+## Raios
+
+A forma acompanha a hierarquia. Controles e mídias usam **pílula/círculo**, e contêineres usam raios
+retangulares que crescem com o tamanho do elemento.
+
+<Unstyled>
+  <RadiusScale />
+</Unstyled>
+
+| Elemento                         | Raio                               |
+| -------------------------------- | ---------------------------------- |
+| Botões, badges, abas, avatares   | `rounded-pill`                     |
+| Itens do accordion               | `rounded-md`                       |
+| Fotos retangulares               | `rounded-lg`                       |
+| Cartão de depoimento, trilho FAQ | `rounded-xl`                       |
+| Bloco do CTA                     | sem raio (a borda é a `PixelBand`) |
+
+## Elevação
+
+O sistema **não usa sombras**. Profundidade vem de tom: `surface-sunken` rebaixa, `inverse` destaca.
+Sobre fotos, use o badge `glass` (blur + translucidez) e o scrim gradiente do Hero.

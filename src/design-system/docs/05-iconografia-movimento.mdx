@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/Iconografia e movimento" />
+
+# Iconografia e movimento
+
+## Ícones
+
+- Biblioteca: **[lucide-react](https://lucide.dev)**, com traço fino (`strokeWidth` 1.25–2) para
+  combinar com a serifada.
+- Tamanhos: 14px em badges e abas, 16px em botões, 20px em botões grandes. Os componentes já
+  dimensionam o `svg` filho; não passe `size` manualmente.
+- Ícones decorativos levam `aria-hidden`. Ícones que são o único conteúdo de um controle exigem
+  `IconButton` com `label`.
+- Redes sociais: o lucide 1.x não traz ícones de marcas, então eles ficam em `SocialIcon`
+  (`src/components/ui/social-links`).
+- Seta de navegação: use `withArrow` no `Button`, não adicione `→` ao texto.
+
+## Movimento
+
+| Token                         | Valor                            | Uso                                      |
+| ----------------------------- | -------------------------------- | ---------------------------------------- |
+| `--duration-fast`             | `150ms`                          | Hover e mudança de cor                   |
+| `--duration-base`             | `250ms`                          | Abrir e fechar (accordion), troca de tom |
+| `--ease-soft`                 | `cubic-bezier(0.22, 1, 0.36, 1)` | Curva padrão, desacelera suavemente      |
+| `animate-collapsible-down/up` | `duration-base` + `ease-soft`    | Altura do conteúdo do accordion          |
+
+- Movimento responde a uma ação da pessoa (hover, abrir, trocar). Não há animações automáticas de
+  entrada.
+- `prefers-reduced-motion: reduce` zera transições e animações globalmente (`globals.css`).

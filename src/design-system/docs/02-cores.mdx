@@ -1,0 +1,65 @@
+import {
+  ColorItem,
+  ColorPalette,
+  Meta,
+  Unstyled,
+} from "@storybook/addon-docs/blocks";
+import { palette } from "../tokens";
+import { ContrastTable, SemanticColorTable } from "./doc-blocks";
+
+<Meta title="Design System/Cores" />
+
+# Cores
+
+A paleta tem quatro famílias, extraídas da referência por amostragem de pixels:
+
+- **Cream:** o papel quente onde tudo acontece.
+- **Ink:** um oliva-carvão, nunca preto puro, para texto e blocos escuros.
+- **Lime:** a energia, usada com parcimônia.
+- **Sage:** o verde acinzentado das fotos, para placeholders e apoio.
+
+## Primitivas
+
+<ColorPalette>
+  {Object.entries(palette).map(([scale, steps]) => (
+    <ColorItem
+      key={scale}
+      title={scale}
+      subtitle={`--color-${scale}-*`}
+      colors={Object.fromEntries(
+        Object.entries(steps).map(([step, hex]) => [step, hex]),
+      )}
+    />
+  ))}
+</ColorPalette>
+
+## Semânticas
+
+Use estes nomes nos componentes (`bg-surface-sunken`, `text-foreground-muted`…). Trocar o valor de
+um token semântico atualiza todo o sistema.
+
+<Unstyled>
+  <SemanticColorTable />
+</Unstyled>
+
+## Contraste
+
+Calculado ao vivo pela fórmula WCAG 2.x, e cada linha é verificada em `contrast.test.ts`.
+
+<Unstyled>
+  <ContrastTable />
+</Unstyled>
+
+> **Por que `foreground-subtle` não é o cinza da referência?** O cinza usado no texto atenuado da
+> referência (`#A9A79C`) tem 2,3:1 sobre o creme e reprova até para texto grande. O sistema usa
+> `ink-500` (`#86847A`, 3,6:1), visualmente próximo, liberado **somente** para tamanhos de display
+> (≥ 24px). Para texto corrido secundário, use `foreground-muted`.
+
+## Regras
+
+- **Accent é escasso:** no máximo uma ação limão por área visível. A segunda ação usa `primary`
+  (fundo claro) ou `secondary` (fundo escuro).
+- **Sem preto puro:** o tom mais escuro de texto é `ink-900`. `ink-950` existe só para o scrim de
+  fotos.
+- **Fundo escuro = `inverse`:** use os tokens `inverse-*` para texto e controles sobre ele, e
+  `ring-inverse` (limão) para o foco.

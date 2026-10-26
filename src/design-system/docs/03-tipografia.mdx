@@ -1,0 +1,54 @@
+import { Meta, Typeset, Unstyled } from "@storybook/addon-docs/blocks";
+import { DoDont, TypeScaleTable } from "./doc-blocks";
+
+<Meta title="Design System/Tipografia" />
+
+# Tipografia
+
+Duas famílias bem distintas, carregadas com `next/font` (`src/app/fonts.ts`):
+
+| Papel   | Família              | Token          | Uso                                       |
+| ------- | -------------------- | -------------- | ----------------------------------------- |
+| Display | **Instrument Serif** | `font-display` | Títulos, citações, logo                   |
+| Texto   | **Inter**            | `font-sans`    | Texto corrido, navegação, botões, rótulos |
+
+A Instrument Serif é uma serifada condensada de alto contraste, a mais próxima da referência entre
+as fontes livres. Tem um único peso (400): a hierarquia vem do **tamanho**, nunca do negrito.
+
+<Typeset
+  fontFamily="var(--font-display)"
+  fontSizes={[88, 64, 48, 36, 24]}
+  sampleText="Comece sua jornada para mais calma"
+/>
+
+<Typeset
+  fontFamily="var(--font-sans)"
+  fontSizes={[18, 16, 14, 13, 12]}
+  fontWeight={400}
+  sampleText="Sessões com psicólogos e práticas de atenção plena para o dia a dia."
+/>
+
+## Escala
+
+Os tamanhos de display são fluidos (`clamp`) e crescem com a largura da tela. Cada token já inclui
+altura de linha e espaçamento entre letras.
+
+<Unstyled>
+  <TypeScaleTable />
+</Unstyled>
+
+## Regras
+
+- **Nível ≠ tamanho:** `<Heading as="h2" size="2xl">` é válido. Escolha `as` pela estrutura do
+  documento e `size` pela hierarquia visual.
+- **Caixa alta só em `label`:** botões e links de navegação. Nunca em títulos ou parágrafos.
+- **Linhas curtas:** títulos com `text-balance` e `max-w-[18ch]`–`[20ch]`; parágrafos até ~65
+  caracteres.
+- **Ênfase por tom:** para atenuar parte de um título use `HeadingMuted`, nunca itálico ou negrito.
+
+<Unstyled>
+  <DoDont
+    doo="Usar o tamanho para criar hierarquia: display-2xl no hero, display-lg nas seções, display-sm em cartões."
+    dont="Aplicar negrito na Instrument Serif ou misturar outras serifadas; o sistema perde a voz calma."
+  />
+</Unstyled>
