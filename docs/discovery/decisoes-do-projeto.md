@@ -122,3 +122,13 @@ plantas), com créditos registrados no README.
   seguem a direção de arte. A curadoria das fotos fica como trabalho manual.
 - Os componentes já aceitam `src` e `alt`, então trocar o placeholder pela foto é só editar
   `src/content/landing.tsx`.
+
+## D13 — Mapa sem cookies de terceiros
+
+**Decisão:** o mapa da seção de localização usa o embed do **OpenStreetMap**, carregado com
+`loading="lazy"`, em vez do embed do Google Maps. O link "Como chegar" continua abrindo o Google
+Maps. Como o endereço é fictício, o mapa mostra a região da estação Ana Rosa, e a legenda diz isso.
+
+**Por quê:** o embed do Google Maps grava cookies de terceiros assim que carrega, antes de qualquer
+consentimento, o que contraria a LPC-24 e a LGPD. O OpenStreetMap não grava cookies. O link para o
+Google Maps só é acionado por um clique da pessoa, quando ela já está saindo do site.

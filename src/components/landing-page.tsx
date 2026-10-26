@@ -5,6 +5,7 @@ import {
   CtaBanner,
   FaqSection,
   Hero,
+  LocationSection,
   SiteFooter,
   SiteHeader,
   SpecialtiesSection,
@@ -19,6 +20,7 @@ import {
   footerContent,
   headerContent,
   heroContent,
+  locationContent,
   specialtiesContent,
 } from "@/content/landing";
 
@@ -43,6 +45,7 @@ export function LandingPage() {
         <BenefitsSection {...benefitsContent} />
         <CareStepsSection {...careStepsContent} />
         <FaqSection {...faqContent} />
+        <LocationSection {...locationContent} />
         <CtaBanner {...ctaContent} />
       </main>
       <SiteFooter {...footerContent} />
