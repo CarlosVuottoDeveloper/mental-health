@@ -32,6 +32,9 @@ export const palette = {
     500: "#8e936a",
     600: "#5d6147",
   },
+  clay: {
+    600: "#a23b2a",
+  },
 } as const;
 
 type PaletteRef = {
@@ -118,6 +121,11 @@ export const semanticColors = [
     token: "ring-inverse",
     value: "lime-400",
     usage: "Foco visível sobre fundo escuro",
+  },
+  {
+    token: "danger",
+    value: "clay-600",
+    usage: "Mensagens e bordas de erro em formulários",
   },
 ] as const satisfies readonly SemanticColor[];
 

@@ -132,3 +132,14 @@ Maps. Como o endereço é fictício, o mapa mostra a região da estação Ana Ro
 **Por quê:** o embed do Google Maps grava cookies de terceiros assim que carrega, antes de qualquer
 consentimento, o que contraria a LPC-24 e a LGPD. O OpenStreetMap não grava cookies. O link para o
 Google Maps só é acionado por um clique da pessoa, quando ela já está saindo do site.
+
+## D14 — Formulário na versão de demonstração
+
+**Decisão:** sem a chave do Resend, o envio é simulado em desenvolvimento e falha em produção (o
+visitante vê o erro e o atalho para o WhatsApp). A variável `CONTACT_SIMULATE=true` liga um modo de
+demonstração explícito em produção: o servidor valida tudo (schema, honeypot, tempo mínimo, limite
+por IP) e confirma sem enviar e-mail.
+
+**Por quê:** num consultório real, um formulário que finge enviar seria uma falha grave; por isso o
+padrão é falhar de forma visível. Já no portfólio publicado, sem conta de e-mail, o fluxo completo
+precisa ser demonstrável. O modo é opt-in e documentado no `.env.example`.
