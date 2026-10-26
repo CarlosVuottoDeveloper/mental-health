@@ -5,7 +5,7 @@ import { footerContent, headerContent } from "@/content/landing";
 import { privacyPolicy } from "@/content/privacy";
 
 export const metadata: Metadata = {
-  title: "Política de privacidade · Dra. Helena Vasconcelos",
+  title: "Política de privacidade",
   description:
     "Como os dados do formulário de contato e de navegação são tratados, com base na LGPD.",
   alternates: { canonical: "/politica-de-privacidade" },
