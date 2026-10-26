@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CookieBanner } from "@/components/sections";
 import { fontVariables } from "./fonts";
 import "./globals.css";
 
@@ -19,7 +20,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${fontVariables} h-full`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {children}
+        <CookieBanner policyHref="/politica-de-privacidade" />
+      </body>
     </html>
   );
 }
