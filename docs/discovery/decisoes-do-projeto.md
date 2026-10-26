@@ -95,3 +95,14 @@ componente `LandingPage` é usado no Storybook.
 
 **Por quê:** cada deploy de preview mostra o progresso real do site, que é o que interessa num
 portfólio; e o Storybook deixa de manter uma cópia da composição.
+
+## D11 — Vercel por último
+
+**Decisão:** a integração com a Vercel (LPC-7) e o domínio (LPC-25) ficam para a última fase. Até
+lá, o site é construído e validado localmente. As variáveis de ambiente da LPC-18 (número do
+WhatsApp) e da LPC-17 (chave do Resend) usam `.env.local`, com um `.env.example` versionado. O QA
+(LPC-27) e o handoff (LPC-28) acontecem depois do deploy.
+
+**Por quê:** pedido do usuário em 2026-10-26. Nenhuma task de código depende da Vercel além das
+variáveis de ambiente, que funcionam localmente; e o QA em iPhone e Android reais pede uma URL
+publicada.
