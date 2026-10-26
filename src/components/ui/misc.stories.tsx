@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { AvatarGroup, Avatar } from "./avatar/avatar";
 import { Logo, LogoMark } from "./logo/logo";
-import { Rating } from "./rating/rating";
 import { SectionLabel } from "./section-label/section-label";
 
 const meta = {
@@ -10,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Peças pequenas usadas em várias seções: marca, avatares, avaliação e rótulo de seção.",
+          "Peças pequenas usadas em várias seções: marca, avatares e rótulo de seção.",
       },
     },
   },
@@ -40,6 +39,14 @@ const people = [
 ];
 
 export const Avatars: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Para identificar profissionais e equipe. Nunca use para exibir pacientes ou contagem de pacientes como prova social (decisão da LPC-2 e Resolução CFM 2.336/2023).",
+      },
+    },
+  },
   render: () => (
     <div className="flex flex-col items-start gap-6">
       <div className="flex items-center gap-3">
@@ -52,19 +59,7 @@ export const Avatars: Story = {
   ),
 };
 
-export const RatingStory: Story = {
-  name: "Rating",
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <Rating value={4} />
-      <div className="rounded-lg bg-inverse p-4 text-inverse-foreground">
-        <Rating value={5} />
-      </div>
-    </div>
-  ),
-};
-
 export const SectionLabelStory: Story = {
   name: "SectionLabel",
-  render: () => <SectionLabel>Sobre nós</SectionLabel>,
+  render: () => <SectionLabel>Sobre a Dra. Helena</SectionLabel>,
 };

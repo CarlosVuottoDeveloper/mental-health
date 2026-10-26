@@ -47,19 +47,24 @@ styleguide, componentes e a landing page de exemplo) está no Storybook: `npm ru
   `bg-accent`, `text-display-lg`…).
 - **Componentes base:** `src/components/ui`, importados de `@/components/ui`.
 - **Seções da landing page:** `src/components/sections`, importadas de `@/components/sections`.
+- **Conteúdo:** `src/content/landing.tsx`. Para mudar um texto, edite este arquivo, sem tocar
+  nos componentes.
+- **Planejamento:** `docs/planning/plano-de-implementacao.md` (ordem das tasks do Jira) e
+  `docs/discovery/` (decisões de descoberta).
 
 ## Estrutura
 
 ```
 src/
   app/              # rotas do App Router (layout, páginas, fontes, estilos globais)
+  content/          # textos da landing page, tipados e separados dos componentes
   components/
     ui/             # componentes base do design system
     sections/       # seções da landing page
+    landing-page.tsx  # composição da página (app e Storybook)
   design-system/
     docs/           # styleguide (MDX do Storybook)
-    examples/       # conteúdo de exemplo e landing page completa
-  lib/              # utilitários (cn)
+  lib/              # utilitários (cn, whatsappUrl)
   styles/           # tokens de design
   test/             # setup do Vitest
 public/             # arquivos estáticos

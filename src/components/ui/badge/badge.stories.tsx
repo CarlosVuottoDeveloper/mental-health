@@ -6,7 +6,7 @@ import { Badge } from "./badge";
 const meta = {
   title: "Componentes/Badge",
   component: Badge,
-  args: { children: "Novo programa" },
+  args: { children: "Teleconsulta" },
   argTypes: {
     variant: {
       control: "inline-radio",
@@ -35,7 +35,7 @@ export const GlassOverPhoto: Story = {
     >
       <Badge {...args}>
         <Sparkle aria-hidden className="text-accent" />
-        Cuidado com a sua mente
+        Psiquiatria para adultos
       </Badge>
     </div>
   ),

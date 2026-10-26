@@ -1,25 +1,28 @@
 import {
   AboutSection,
+  CareStepsSection,
   CtaBanner,
   FaqSection,
   Hero,
   SiteFooter,
   SiteHeader,
-  TestimonialCard,
 } from "@/components/sections";
-import { Container } from "@/components/ui";
 import {
   aboutContent,
+  careStepsContent,
   ctaContent,
   faqContent,
   footerContent,
   headerContent,
   heroContent,
-  testimonials,
-} from "./landing-content";
+} from "@/content/landing";
 
-/** Reference composition of every landing-page section, in order. */
-export function LandingPageExample() {
+/**
+ * The landing page: implemented sections in the order defined in LPC-3.
+ * Used by `src/app/page.tsx` and by Storybook. Especialidades, benefícios and
+ * localização are still to be built (see docs/planning).
+ */
+export function LandingPage() {
   return (
     <>
       <Hero
@@ -28,9 +31,7 @@ export function LandingPageExample() {
       />
       <main>
         <AboutSection {...aboutContent} />
-        <Container>
-          <TestimonialCard testimonials={testimonials} />
-        </Container>
+        <CareStepsSection {...careStepsContent} />
         <FaqSection {...faqContent} />
         <CtaBanner {...ctaContent} />
       </main>

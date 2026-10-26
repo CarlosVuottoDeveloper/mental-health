@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { LandingPageExample } from "./landing-page";
+import { LandingPage } from "./landing-page";
 
 const meta = {
   title: "Páginas/Landing page",
-  component: LandingPageExample,
+  component: LandingPage,
   parameters: {
     layout: "fullscreen",
     docs: {
       description: {
         component:
-          "Composição de referência com todas as seções na ordem recomendada. As fotos são placeholders em gradiente até a chegada das imagens reais.",
+          "A página real (`src/app/page.tsx`) com as seções já implementadas, na ordem da LPC-3. As fotos são placeholders em gradiente até a chegada das imagens.",
       },
     },
   },
-} satisfies Meta<typeof LandingPageExample>;
+} satisfies Meta<typeof LandingPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

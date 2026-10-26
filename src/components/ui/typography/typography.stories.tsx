@@ -5,7 +5,7 @@ const meta = {
   title: "Componentes/Typography",
   component: Heading,
   args: {
-    children: "Comece sua jornada para mais calma",
+    children: "Como funciona o acompanhamento",
     size: "lg",
     as: "h2",
   },
@@ -37,9 +37,10 @@ export const Statement: Story = {
     className: "max-w-3xl",
     children: (
       <>
-        Um caminho mais leve para o bem-estar, com acompanhamento personalizado,{" "}
+        Um bom tratamento nasce de uma relação de confiança.{" "}
         <HeadingMuted>
-          práticas de atenção plena e hábitos simples que duram.
+          Por isso reservo tempo para ouvir sua história e decidir junto com
+          você os próximos passos.
         </HeadingMuted>
       </>
     ),

@@ -10,7 +10,6 @@ import {
   Heading,
   IconButton,
   pixelPatterns,
-  Rating,
   SocialLinks,
   Tabs,
   TabsContent,
@@ -20,20 +19,20 @@ import {
 
 describe("Button", () => {
   it("renders a button with the arrow hidden from assistive tech", () => {
-    render(<Button withArrow>Agendar sessão</Button>);
+    render(<Button withArrow>Agendar consulta</Button>);
 
-    const button = screen.getByRole("button", { name: "Agendar sessão" });
+    const button = screen.getByRole("button", { name: "Agendar consulta" });
     expect(button.querySelector("svg")).toHaveAttribute("aria-hidden");
   });
 
   it("renders its child element when asChild is set", () => {
     render(
       <Button asChild withArrow variant="accent">
-        <a href="#agendar">Agendar sessão</a>
+        <a href="#agendar">Agendar consulta</a>
       </Button>,
     );
 
-    const link = screen.getByRole("link", { name: "Agendar sessão" });
+    const link = screen.getByRole("link", { name: "Agendar consulta" });
     expect(link).toHaveAttribute("href", "#agendar");
     expect(link).toHaveClass("bg-accent");
     expect(link.querySelector("svg")).toBeInTheDocument();
@@ -77,15 +76,6 @@ describe("Avatar", () => {
     expect(screen.getByRole("img", { name: "Ana Souza" })).toHaveTextContent(
       "AS",
     );
-  });
-});
-
-describe("Rating", () => {
-  it("announces the score", () => {
-    render(<Rating value={4} />);
-    expect(
-      screen.getByRole("img", { name: "Avaliação: 4 de 5" }),
-    ).toBeInTheDocument();
   });
 });
 
