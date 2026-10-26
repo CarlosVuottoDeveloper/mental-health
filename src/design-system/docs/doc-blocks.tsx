@@ -51,6 +51,12 @@ export const contrastPairs = [
     expected: "AAA",
   },
   {
+    label: "Erro / fundo",
+    fg: "clay-600",
+    bg: "cream-50",
+    expected: "AA",
+  },
+  {
     label: "Cinza da referência (#A9A79C) / fundo",
     fg: "ink-400",
     bg: "cream-50",

@@ -5,6 +5,12 @@ import { extendTailwindMerge } from "tailwind-merge";
 // `text-display-xl` as a color and drops it when merged with `text-foreground`.
 const twMerge = extendTailwindMerge({
   extend: {
+    // Custom theme values, so `max-w-3xl` overrides `max-w-page` and
+    // `px-0` overrides `px-gutter` instead of both classes being kept.
+    theme: {
+      container: ["page"],
+      spacing: ["gutter", "section"],
+    },
     classGroups: {
       "font-size": [
         {

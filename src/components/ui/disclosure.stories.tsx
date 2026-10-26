@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { CircleHelp, CreditCard, LayoutGrid } from "lucide-react";
+import { MapPin, Video } from "lucide-react";
+import { faqContent } from "@/content/landing";
 import {
   Accordion,
   AccordionContent,
@@ -23,20 +24,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const questions = [
-  {
-    q: "Como agendo minha primeira sessão?",
-    a: "Escolha um terapeuta, selecione um horário livre e confirme. Você recebe a confirmação por e-mail.",
-  },
-  {
-    q: "As sessões podem ser online?",
-    a: "Sim. As sessões online acontecem por vídeo em uma sala segura, e você pode participar de onde estiver.",
-  },
-  {
-    q: "O que eu compartilho é confidencial?",
-    a: "Sim. Tudo o que é dito nas sessões é protegido pelo sigilo profissional e pela LGPD.",
-  },
-];
+const questions = faqContent.categories[0]?.items.slice(0, 3) ?? [];
 
 export const AccordionStory: Story = {
   name: "Accordion",
@@ -49,11 +37,11 @@ export const AccordionStory: Story = {
     },
   },
   render: () => (
-    <Accordion type="single" collapsible defaultValue="1">
+    <Accordion type="single" collapsible defaultValue="0">
       {questions.map((item, i) => (
-        <AccordionItem key={item.q} value={String(i)}>
-          <AccordionTrigger>{item.q}</AccordionTrigger>
-          <AccordionContent>{item.a}</AccordionContent>
+        <AccordionItem key={item.question} value={String(i)}>
+          <AccordionTrigger>{item.question}</AccordionTrigger>
+          <AccordionContent>{item.answer}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
@@ -63,29 +51,23 @@ export const AccordionStory: Story = {
 export const TabsStory: Story = {
   name: "Tabs",
   render: () => (
-    <Tabs defaultValue="geral">
-      <TabsList aria-label="Categorias">
-        <TabsTrigger value="geral">
-          <CircleHelp aria-hidden />
-          Geral
+    <Tabs defaultValue="presencial">
+      <TabsList aria-label="Formato de atendimento">
+        <TabsTrigger value="presencial">
+          <MapPin aria-hidden />
+          Presencial
         </TabsTrigger>
-        <TabsTrigger value="programas">
-          <LayoutGrid aria-hidden />
-          Programas
-        </TabsTrigger>
-        <TabsTrigger value="pagamentos">
-          <CreditCard aria-hidden />
-          Pagamentos
+        <TabsTrigger value="online">
+          <Video aria-hidden />
+          Online
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="geral" className="text-body-sm">
-        Perguntas gerais sobre o atendimento.
+      <TabsContent value="presencial" className="text-body-sm">
+        Consultório na Vila Mariana, em São Paulo, a 5 minutos do metrô.
       </TabsContent>
-      <TabsContent value="programas" className="text-body-sm">
-        Terapia individual, de casal e programas de atenção plena.
-      </TabsContent>
-      <TabsContent value="pagamentos" className="text-body-sm">
-        Pix, cartão de crédito e boleto.
+      <TabsContent value="online" className="text-body-sm">
+        Teleconsulta por vídeo para todo o Brasil, com receitas emitidas por
+        assinatura digital.
       </TabsContent>
     </Tabs>
   ),

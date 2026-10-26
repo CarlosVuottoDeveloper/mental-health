@@ -1,21 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Container } from "@/components/ui";
 import {
   aboutContent,
+  benefitsContent,
+  careStepsContent,
+  contactContent,
   ctaContent,
   faqContent,
   footerContent,
   headerContent,
   heroContent,
-  testimonials,
-} from "@/design-system/examples/landing-content";
+  locationContent,
+  specialtiesContent,
+} from "@/content/landing";
 import { AboutSection } from "./about-section";
+import { BenefitsSection } from "./benefits-section";
+import { CareStepsSection } from "./care-steps-section";
+import { ContactSection } from "./contact-section";
 import { CtaBanner } from "./cta-banner";
 import { FaqSection } from "./faq-section";
 import { Hero } from "./hero";
+import { LocationSection } from "./location-section";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
-import { TestimonialCard } from "./testimonial-card";
+import { SpecialtiesSection } from "./specialties-section";
 
 const meta = {
   title: "Seções",
@@ -34,7 +41,9 @@ export const HeroSection: Story = {
   render: () => (
     <Hero
       {...heroContent}
-      header={<SiteHeader {...headerContent} tone="inverse" />}
+      header={
+        <SiteHeader {...headerContent} overlayTargetId={heroContent.id} />
+      }
     />
   ),
 };
@@ -44,12 +53,30 @@ export const About: Story = {
   render: () => <AboutSection {...aboutContent} />,
 };
 
-export const Testimonials: Story = {
-  name: "Depoimentos",
+export const Specialties: Story = {
+  name: "Especialidades",
+  render: () => <SpecialtiesSection {...specialtiesContent} />,
+};
+
+export const Benefits: Story = {
+  name: "Atendimento (benefícios)",
+  render: () => <BenefitsSection {...benefitsContent} />,
+};
+
+export const CareSteps: Story = {
+  name: "Como funciona o acompanhamento",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Substitui a seção de depoimentos (decisão da LPC-2), na mesma posição e com o mesmo peso visual. Linha do tempo vertical no mobile e horizontal a partir de `md`.",
+      },
+    },
+  },
   render: () => (
-    <Container className="py-12">
-      <TestimonialCard testimonials={testimonials} />
-    </Container>
+    <div className="py-12">
+      <CareStepsSection {...careStepsContent} />
+    </div>
   ),
 };
 
@@ -58,9 +85,51 @@ export const Faq: Story = {
   render: () => <FaqSection {...faqContent} />,
 };
 
+export const FaqWithCategories: Story = {
+  name: "FAQ com categorias",
+  parameters: {
+    docs: {
+      description: {
+        story: "Com mais de uma categoria, as perguntas são agrupadas em abas.",
+      },
+    },
+  },
+  render: () => {
+    const [general] = faqContent.categories;
+    const items = general?.items ?? [];
+    return (
+      <FaqSection
+        {...faqContent}
+        categories={[
+          { id: "consulta", label: "Consulta", items: items.slice(0, 4) },
+          { id: "tratamento", label: "Tratamento", items: items.slice(4) },
+        ]}
+      />
+    );
+  },
+};
+
+export const Location: Story = {
+  name: "Localização",
+  render: () => <LocationSection {...locationContent} />,
+};
+
 export const Cta: Story = {
-  name: "CTA",
+  name: "Agendamento (CTA)",
   render: () => <CtaBanner {...ctaContent} />,
+};
+
+export const Contact: Story = {
+  name: "Contato (formulário)",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "No Storybook não há API: enviar um formulário válido mostra o estado de erro, com o atalho para o WhatsApp.",
+      },
+    },
+  },
+  render: () => <ContactSection {...contactContent} />,
 };
 
 export const Footer: Story = {

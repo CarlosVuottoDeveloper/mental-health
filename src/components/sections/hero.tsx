@@ -2,7 +2,6 @@ import { Sparkle } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
-  AvatarGroup,
   Badge,
   Button,
   Container,
@@ -17,10 +16,16 @@ export type HeroProps = {
   title: ReactNode;
   description: string;
   cta: { label: string; href: string };
-  socialProof: { label: ReactNode; people: { name: string; src?: string }[] };
+  secondaryCta?: { label: string; href: string };
+  /**
+   * Professional identification (name · specialty · CRM · RQE), required by
+   * CFM 2.336/2023. Replaces patient counts or other social proof.
+   */
+  credentials: string;
   image?: { src: string; alt: string };
   /** Rendered at the top of the hero, over the image (usually `SiteHeader tone="inverse"`). */
   header?: ReactNode;
+  id?: string;
   className?: string;
 };
 
@@ -29,13 +34,16 @@ export function Hero({
   title,
   description,
   cta,
-  socialProof,
+  secondaryCta,
+  credentials,
   image,
   header,
+  id,
   className,
 }: HeroProps) {
   return (
     <section
+      id={id}
       className={cn(
         "relative isolate flex min-h-[min(100svh,52rem)] flex-col overflow-hidden bg-inverse text-inverse-foreground",
         className,
@@ -67,31 +75,30 @@ export function Hero({
             {badge}
           </Badge>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <Heading as="h1" size="2xl" tone="inverse" className="max-w-[20ch]">
+            <Heading as="h1" size="2xl" tone="inverse" className="max-w-[22ch]">
               {title}
             </Heading>
-            <Button
-              variant="accent"
-              withArrow
-              asChild
-              className="self-start lg:self-auto"
-            >
-              <a href={cta.href}>{cta.label}</a>
-            </Button>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 lg:shrink-0">
+              <Button variant="accent" withArrow asChild>
+                <a href={cta.href}>{cta.label}</a>
+              </Button>
+              {secondaryCta && (
+                <Button
+                  variant="link"
+                  asChild
+                  className="focus-visible:outline-ring-inverse"
+                >
+                  <a href={secondaryCta.href}>{secondaryCta.label}</a>
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex items-center gap-3">
-            <AvatarGroup
-              people={socialProof.people}
-              size="md"
-              ringClassName="ring-ink-900"
-            />
-            <Text as="span" size="caption" tone="inverse" className="uppercase">
-              {socialProof.label}
-            </Text>
-          </div>
+          <Text size="caption" tone="inverse" className="uppercase">
+            {credentials}
+          </Text>
           <Text size="sm" tone="inverse" className="max-w-[46ch] opacity-90">
             {description}
           </Text>

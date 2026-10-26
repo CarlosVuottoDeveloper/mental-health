@@ -36,6 +36,8 @@
   --color-sage-500: #8e936a;
   --color-sage-600: #5d6147;
 
+  --color-clay-600: #a23b2a;
+
   /* ---------- Semantic: color ---------- */
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-50);
@@ -63,6 +65,9 @@
 
   --color-ring: var(--color-ink-900);
   --color-ring-inverse: var(--color-lime-400);
+
+  /* Form errors: 6.3:1 on background. */
+  --color-danger: var(--color-clay-600);
 
   /* ---------- Typography ---------- */
   --font-display: var(--font-instrument-serif), "Times New Roman", serif;
