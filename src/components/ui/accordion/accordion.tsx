@@ -82,9 +82,12 @@ export function AccordionContent({
   ...props
 }: ComponentProps<typeof AccordionPrimitive.Content>) {
   return (
+    // forceMount keeps closed answers in the HTML (crawlers and Ctrl+F find
+    // them); CSS hides them while closed.
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down"
+      forceMount
+      className="overflow-hidden data-[state=closed]:hidden data-[state=open]:animate-collapsible-down"
       {...props}
     >
       <div

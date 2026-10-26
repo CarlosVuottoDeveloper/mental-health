@@ -40,6 +40,18 @@ describe("FaqSection", () => {
     expect(screen.getAllByRole("button")).toHaveLength(8);
   });
 
+  it("keeps closed answers in the HTML, hidden by CSS", () => {
+    const { container } = render(<FaqSection {...faqContent} />);
+    const [, closed] = faqContent.categories[0].items;
+
+    const answer = screen.getByText(closed.answer);
+    expect(answer.closest("[data-state]")).toHaveAttribute(
+      "data-state",
+      "closed",
+    );
+    expect(container.textContent).toContain(closed.answer);
+  });
+
   it("groups several categories in tabs", () => {
     const items = faqContent.categories[0].items;
     render(
