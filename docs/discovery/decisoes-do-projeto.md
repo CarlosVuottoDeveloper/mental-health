@@ -106,3 +106,19 @@ WhatsApp) e da LPC-17 (chave do Resend) usam `.env.local`, com um `.env.example`
 **Por quê:** pedido do usuário em 2026-10-26. Nenhuma task de código depende da Vercel além das
 variáveis de ambiente, que funcionam localmente; e o QA em iPhone e Android reais pede uma URL
 publicada.
+
+## D12 — Fotos
+
+**Decisão:** não usar fotos de banco de imagens com pessoas identificáveis representando a Dra.
+Helena. As áreas de foto (hero, retrato do "Sobre", consultório, fachada) usam os placeholders em
+gradiente do design system até a escolha manual de fotos de ambiente (consultório, luz natural,
+plantas), com créditos registrados no README.
+
+**Por quê:**
+
+- Apresentar o modelo de uma foto de banco como psiquiatra, num contexto de saúde mental, cria uma
+  associação falsa com uma pessoa real.
+- O Unsplash bloqueia acesso automatizado, e as fotos livres encontradas no Wikimedia Commons não
+  seguem a direção de arte. A curadoria das fotos fica como trabalho manual.
+- Os componentes já aceitam `src` e `alt`, então trocar o placeholder pela foto é só editar
+  `src/content/landing.tsx`.

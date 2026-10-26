@@ -72,7 +72,7 @@ export const heroContent: Omit<HeroProps, "header"> = {
   credentials: credentialsLine,
 };
 
-// LPC-1 "Sobre" text, condensed; the full 2–3 paragraph version belongs to LPC-10.
+// LPC-10, built from the LPC-1 "Sobre" text. Institutions are fictitious on purpose.
 export const aboutContent: AboutSectionProps = {
   id: anchors.about,
   label: "Sobre a Dra. Helena",
@@ -85,9 +85,23 @@ export const aboutContent: AboutSectionProps = {
       </HeadingMuted>
     </>
   ),
-  credentials: {
-    name: professional.name,
-    detail: `${professional.specialty} · ${professional.crm} · ${professional.rqe}`,
+  paragraphs: [
+    "Sou psiquiatra, formada em Medicina pela Universidade Fictícia, com residência médica em Psiquiatria e mais de 10 anos de experiência no atendimento de adultos.",
+    "Na consulta, explico o que estou observando e quais caminhos de tratamento existem. Quando a medicação faz sentido, conversamos sobre benefícios, possíveis efeitos colaterais e alternativas, e a decisão é tomada junto com você.",
+    "Também olho para o que acontece fora do consultório: sono, rotina e, quando indicado, o trabalho em conjunto com a psicoterapia.",
+  ],
+  credentials: [
+    { label: "Nome", value: professional.name },
+    { label: "Especialidade", value: "Psiquiatria" },
+    { label: "Registro", value: `${professional.crm} · ${professional.rqe}` },
+    { label: "Formação", value: "Medicina · Universidade Fictícia" },
+    { label: "Residência médica", value: "Psiquiatria · Hospital Fictício" },
+    { label: "Atuação", value: "Mais de 10 anos, atendimento de adultos" },
+  ],
+  // No stock photos of identifiable people as the doctor (decision D12).
+  portrait: {
+    placeholder: "sage",
+    alt: "Consultório da Dra. Helena Vasconcelos",
   },
   socials: [
     { network: "instagram", href: "https://instagram.com" },
