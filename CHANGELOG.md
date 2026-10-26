@@ -4,6 +4,42 @@ Todas as mudanças relevantes deste projeto são documentadas aqui.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o projeto usa
 [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [0.2.0] - 2026-10-26
+
+Landing page completa da Dra. Helena Vasconcelos (cliente fictícia), cobrindo as tasks do quadro
+LPC que não dependem da publicação.
+
+### Adicionado
+
+- Seções: header fixo com menu acessível (LPC-8), hero (LPC-9), sobre com CRM/RQE (LPC-10),
+  especialidades (LPC-11), atendimento (LPC-12), FAQ (LPC-13), como funciona o acompanhamento
+  (LPC-14), localização com mapa OpenStreetMap e rodapé completo (LPC-15).
+- Conversão: botão flutuante de WhatsApp (LPC-18), formulário de contato com React Hook Form + Zod
+  (LPC-16), `POST /api/contato` com Resend, honeypot e limite por IP (LPC-17), bloco de agendamento
+  (LPC-19).
+- LGPD: política de privacidade, banner de cookies e preferências no rodapé (LPC-24).
+- SEO: metadata, Open Graph gerado, ícones da marca (LPC-20), JSON-LD `Physician` e `FAQPage`,
+  sitemap e robots (LPC-21).
+- Analytics: Vercel Analytics, Speed Insights e GA4 com consentimento, com eventos de conversão
+  (LPC-26).
+- Design system: componentes de formulário e token de erro (`danger`).
+- Documentação: plano de implementação, decisões D1–D15, revisão CFM, Lighthouse, QA pré-deploy e
+  rascunho do estudo de caso.
+
+### Alterado
+
+- Conteúdo movido para `src/content` e alinhado ao briefing (LPC-1, LPC-2).
+- Site inteiro com `noindex` enquanto for portfólio.
+
+### Removido
+
+- Componentes de depoimento e de avaliação em estrelas (decisão da LPC-2).
+
+### Corrigido
+
+- `cn()` não deixava `max-w-3xl` sobrescrever `max-w-page`, deixando FAQ e política com largura
+  total.
+
 ## [0.1.0] - 2026-10-26
 
 ### Adicionado
@@ -19,4 +55,5 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
+[0.2.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.1.0
