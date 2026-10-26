@@ -8,6 +8,7 @@ import {
   footerContent,
   headerContent,
   heroContent,
+  locationContent,
   specialtiesContent,
 } from "@/content/landing";
 import { AboutSection } from "./about-section";
@@ -16,6 +17,7 @@ import { CareStepsSection } from "./care-steps-section";
 import { CtaBanner } from "./cta-banner";
 import { FaqSection } from "./faq-section";
 import { Hero } from "./hero";
+import { LocationSection } from "./location-section";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 import { SpecialtiesSection } from "./specialties-section";
@@ -103,6 +105,11 @@ export const FaqWithCategories: Story = {
       />
     );
   },
+};
+
+export const Location: Story = {
+  name: "Localização",
+  render: () => <LocationSection {...locationContent} />,
 };
 
 export const Cta: Story = {

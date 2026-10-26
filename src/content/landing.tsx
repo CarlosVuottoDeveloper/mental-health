@@ -7,6 +7,7 @@ import type {
   CtaBannerProps,
   FaqSectionProps,
   HeroProps,
+  LocationSectionProps,
   SiteFooterProps,
   SpecialtiesSectionProps,
   SiteHeaderProps,
@@ -31,6 +32,7 @@ export const anchors = {
   benefits: "atendimento",
   care: "como-funciona",
   faq: "duvidas",
+  location: "localizacao",
   booking: "agendar",
 } as const;
 
@@ -43,6 +45,22 @@ export const professional = {
 } as const;
 
 export const credentialsLine = `${professional.name} · ${professional.specialty} · ${professional.crm} · ${professional.rqe}`;
+
+// Fictitious practice details (LPC-1). Phone matches the WhatsApp placeholder;
+// the e-mail uses the reserved .example domain.
+export const practice = {
+  address: ["Rua das Acácias, 250 · conj. 42", "Vila Mariana · São Paulo/SP"],
+  phone: { label: "(11) 90000-0000", href: "tel:+5511900000000" },
+  email: {
+    label: "contato@helenavasconcelos.example",
+    href: "mailto:contato@helenavasconcelos.example",
+  },
+  // Decision D4.
+  hours: {
+    weekdays: "Segunda a sexta, das 8h às 19h",
+    saturday: "Sábado, das 8h às 12h, somente online",
+  },
+} as const;
 
 // LPC-18: the number will come from an environment variable (.env.local, decision D11).
 // Message combines LPC-1 and LPC-18 (decision D5 in docs/discovery/decisoes-do-projeto.md).
@@ -58,6 +76,7 @@ export const headerContent: Omit<SiteHeaderProps, "tone"> = {
     { label: "Especialidades", href: `/#${anchors.specialties}` },
     { label: "Como funciona", href: `/#${anchors.care}` },
     { label: "Dúvidas", href: `/#${anchors.faq}` },
+    { label: "Localização", href: `/#${anchors.location}` },
   ],
   contact: { label: "Agendar pelo WhatsApp", href: whatsappHref },
 };
@@ -281,13 +300,51 @@ export const faqContent: FaqSectionProps = {
   ],
 };
 
+// LPC-15 + decision D9 (in-person or online) + D13 (OpenStreetMap, no cookies).
+// The address is fictitious, so the map shows the area around Ana Rosa station.
+export const locationContent: LocationSectionProps = {
+  id: anchors.location,
+  label: "Localização",
+  title: "Presencial ou online",
+  description:
+    "Escolha o formato que funciona melhor para você. O cuidado e o tempo de consulta são os mesmos.",
+  inPerson: {
+    title: "Presencial",
+    address: [...practice.address],
+    details: [
+      "A 5 minutos a pé da estação Ana Rosa do metrô (linhas 1-Azul e 2-Verde).",
+      "Estacionamentos pagos a menos de uma quadra.",
+      `${practice.hours.weekdays}.`,
+    ],
+    directions: {
+      label: "Como chegar",
+      href: "https://www.google.com/maps/dir/?api=1&destination=Esta%C3%A7%C3%A3o+Ana+Rosa%2C+S%C3%A3o+Paulo",
+    },
+  },
+  online: {
+    title: "Online",
+    details: [
+      "Teleconsulta por vídeo para todo o Brasil, conforme a Resolução CFM nº 2.314/2022.",
+      "Receitas e atestados emitidos com assinatura digital.",
+      `${practice.hours.weekdays}. ${practice.hours.saturday}.`,
+    ],
+  },
+  map: {
+    src: "https://www.openstreetmap.org/export/embed.html?bbox=-46.6430%2C-23.5845%2C-46.6330%2C-23.5785&layer=mapnik&marker=-23.5815%2C-46.6380",
+    title: "Mapa da região da estação Ana Rosa, na Vila Mariana",
+    caption:
+      "Região da estação Ana Rosa. O endereço do consultório é fictício (projeto de portfólio). Mapa © colaboradores do OpenStreetMap.",
+  },
+  facade: { placeholder: "blush", alt: "Fachada do prédio do consultório" },
+};
+
 // Booking block (LPC-19): WhatsApp only, no calendar integration.
 export const ctaContent: CtaBannerProps = {
   id: anchors.booking,
   title: "Cuidar da sua saúde mental começa com uma boa conversa",
   primary: { label: "Agendar pelo WhatsApp", href: whatsappHref },
   // Hours from the briefing, including online Saturdays (decision D4).
-  note: "Segunda a sexta, das 8h às 19h; sábado, das 8h às 12h, somente online. As mensagens costumam ser respondidas até o fim do dia.",
+  note: `${practice.hours.weekdays}; ${practice.hours.saturday.toLowerCase()}. As mensagens costumam ser respondidas até o fim do dia.`,
 };
 
 export const footerContent: SiteFooterProps = {
@@ -304,7 +361,11 @@ export const footerContent: SiteFooterProps = {
     },
     {
       title: "Contato",
-      links: [{ label: "WhatsApp", href: whatsappHref }],
+      links: [
+        { label: "WhatsApp", href: whatsappHref },
+        { label: practice.phone.label, href: practice.phone.href },
+        { label: practice.email.label, href: practice.email.href },
+      ],
     },
   ],
   disclaimer: (
@@ -318,6 +379,9 @@ export const footerContent: SiteFooterProps = {
   legal: [
     { label: "Política de privacidade", href: "/politica-de-privacidade" },
   ],
-  copyright:
-    "© 2026 Dra. Helena Vasconcelos. Projeto conceitual de portfólio com cliente fictícia.",
+  address: practice.address.join(" · "),
+  socials: aboutContent.socials,
+  copyright: "© 2026 Dra. Helena Vasconcelos",
+  credit:
+    "Projeto conceitual de portfólio, com cliente fictícia. Design e desenvolvimento: Kadu Vuotto.",
 };

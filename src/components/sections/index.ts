@@ -4,6 +4,7 @@ export * from "./care-steps-section";
 export * from "./cta-banner";
 export * from "./faq-section";
 export * from "./hero";
+export * from "./location-section";
 export * from "./site-footer";
 export * from "./site-header";
 export * from "./specialties-section";
