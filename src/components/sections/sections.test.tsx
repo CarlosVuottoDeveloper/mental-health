@@ -1,36 +1,57 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { LandingPageExample } from "@/design-system/examples/landing-page";
-import { testimonials } from "@/design-system/examples/landing-content";
+import {
+  careStepsContent,
+  faqContent,
+  professional,
+  whatsappHref,
+} from "@/content/landing";
+import { LandingPage } from "@/components/landing-page";
+import { CareStepsSection } from "./care-steps-section";
+import { FaqSection } from "./faq-section";
 import { SiteHeader } from "./site-header";
-import { TestimonialCard } from "./testimonial-card";
 
-describe("TestimonialCard", () => {
-  it("cycles through testimonials in both directions", async () => {
-    const user = userEvent.setup();
-    render(<TestimonialCard testimonials={testimonials} />);
+describe("CareStepsSection", () => {
+  it("renders the steps as an ordered list with a heading each", () => {
+    render(<CareStepsSection {...careStepsContent} />);
 
-    expect(screen.getByText(testimonials[0].name)).toBeInTheDocument();
-
-    await user.click(
-      screen.getByRole("button", { name: "Próximo depoimento" }),
-    );
-    expect(screen.getByText(testimonials[1].name)).toBeInTheDocument();
-
-    await user.click(
-      screen.getByRole("button", { name: "Próximo depoimento" }),
-    );
-    expect(screen.getByText(testimonials[0].name)).toBeInTheDocument();
-
-    await user.click(
-      screen.getByRole("button", { name: "Depoimento anterior" }),
-    );
-    expect(screen.getByText(testimonials[1].name)).toBeInTheDocument();
+    const steps = within(screen.getByRole("list")).getAllByRole("listitem");
+    expect(steps).toHaveLength(3);
+    expect(
+      within(steps[0]).getByRole("heading", {
+        level: 3,
+        name: "Primeira consulta",
+      }),
+    ).toBeInTheDocument();
   });
 
-  it("hides navigation when there is a single testimonial", () => {
-    render(<TestimonialCard testimonials={testimonials.slice(0, 1)} />);
-    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+  it("ends with the booking call to action", () => {
+    render(<CareStepsSection {...careStepsContent} />);
+    expect(
+      screen.getByRole("link", { name: "Agendar primeira consulta" }),
+    ).toHaveAttribute("href", whatsappHref);
+  });
+});
+
+describe("FaqSection", () => {
+  it("renders a single category without tabs", () => {
+    render(<FaqSection {...faqContent} />);
+    expect(screen.queryByRole("tablist")).not.toBeInTheDocument();
+    expect(screen.getAllByRole("button")).toHaveLength(8);
+  });
+
+  it("groups several categories in tabs", () => {
+    const items = faqContent.categories[0].items;
+    render(
+      <FaqSection
+        {...faqContent}
+        categories={[
+          { id: "a", label: "Consulta", items: items.slice(0, 2) },
+          { id: "b", label: "Tratamento", items: items.slice(2, 4) },
+        ]}
+      />,
+    );
+    expect(screen.getAllByRole("tab")).toHaveLength(2);
   });
 });
 
@@ -56,21 +77,39 @@ describe("SiteHeader", () => {
   });
 });
 
-describe("LandingPageExample", () => {
+describe("LandingPage", () => {
   it("renders a single h1 and every section heading", () => {
-    render(<LandingPageExample />);
+    render(<LandingPage />);
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    expect(
-      screen.getByRole("heading", { name: "Perguntas frequentes" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", {
-        name: "Volte para o que faz você se sentir bem",
-      }),
-    ).toBeInTheDocument();
+    for (const name of [
+      "Como funciona o acompanhamento",
+      "Perguntas frequentes",
+      "Cuidar da sua saúde mental começa com uma boa conversa",
+    ]) {
+      expect(screen.getByRole("heading", { name })).toBeInTheDocument();
+    }
+  });
 
-    const main = screen.getByRole("main");
-    expect(within(main).getAllByRole("tab")).toHaveLength(4);
+  it("shows CRM and RQE in the hero, the about section and the footer", () => {
+    render(<LandingPage />);
+    expect(
+      screen.getAllByText(
+        new RegExp(`${professional.crm}.*${professional.rqe}`),
+      ),
+    ).toHaveLength(3);
+  });
+
+  // Automated part of the CFM 2.336/2023 checklist (LPC-23); the full review is manual.
+  it.each([
+    ["depoimentos", /depoimento/i],
+    ["promessa de cura", /\bcura\b/i],
+    ["garantia de resultado", /garant/i],
+    ["superlativos", /\b(o|a) melhor\b|refer[êe]ncia em|n[º°] ?1/i],
+    ["preços", /R\$\s?\d/],
+    ["número de pacientes", /\d+\s*mil\s+(pessoas|pacientes)/i],
+  ])("has no %s in the copy", (_, pattern) => {
+    const { container } = render(<LandingPage />);
+    expect(container.textContent).not.toMatch(pattern);
   });
 });

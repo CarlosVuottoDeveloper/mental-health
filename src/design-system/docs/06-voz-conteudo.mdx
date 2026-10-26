@@ -5,45 +5,70 @@ import { DoDont } from "./doc-blocks";
 
 # Voz e conteúdo
 
-Falamos com pessoas que podem estar em um momento difícil. A voz é **acolhedora, direta e sem
-promessas exageradas**.
+Falamos com adultos que, muitas vezes, nunca consultaram um psiquiatra e chegam com receio ou
+estigma. A voz é **acolhedora, direta e sem promessas**: explica o processo e deixa a pessoa no
+controle das decisões.
+
+O conteúdo da página fica em `src/content/landing.tsx`, separado dos componentes.
 
 ## Diretrizes
 
-- **Português do Brasil, segunda pessoa ("você").** Frases curtas, voz ativa.
-- **Botões dizem exatamente o que acontece:** "Agendar sessão", "Falar com a equipe". Evite
-  "Saiba mais" e "Enviar".
-- **Mesma ação, mesmo nome:** se o botão diz "Agendar sessão", a confirmação diz "Sessão agendada".
-- **Sem jargão clínico** desnecessário e sem diagnósticos. Prefira "ansiedade no trabalho" a
-  "transtorno de ansiedade generalizada".
-- **Segurança em primeiro lugar:** conteúdo sobre crise sempre indica o **CVV (188)** e o
-  atendimento de emergência, e deixa claro que o serviço não substitui emergência.
+- **Português do Brasil, segunda pessoa ("você").** Frases curtas, voz ativa. No bloco "Sobre", a
+  médica fala em primeira pessoa.
+- **Botões dizem exatamente o que acontece:** "Agendar pelo WhatsApp", "Agendar primeira consulta",
+  "Conhecer o atendimento". Evite "Saiba mais" e "Enviar".
+- **Mesma ação, mesmo nome:** se o botão diz "Agendar consulta", a confirmação diz "Consulta
+  agendada".
+- **Sem jargão clínico:** descreva como a condição aparece no dia a dia, não a definição clínica.
+  Prefira "dificuldade de organizar tarefas e prazos" a "déficit de função executiva".
+- **Segurança em primeiro lugar:** conteúdo sobre crise sempre indica o **SAMU (192)**, o **CVV
+  (188)** e o pronto-socorro, e deixa claro que o site não substitui uma consulta.
+
+## Regras da Resolução CFM nº 2.336/2023
+
+Valem para todo texto e imagem da página. Parte delas é verificada automaticamente em
+`sections.test.tsx`; a revisão completa é a task LPC-23.
+
+- Nome completo, CRM, UF e RQE visíveis no hero ou em "Sobre" **e** no rodapé.
+- Sem promessa ou garantia de resultado, e sem prazo para "melhora" ou "alta".
+- Sem superlativos ("a melhor", "referência em", "nº 1") e sem comparação com outros profissionais.
+- Sem sensacionalismo, urgência ou escassez.
+- Sem preços ou descontos.
+- Sem imagens de "antes e depois".
+- **Sem depoimentos de pacientes**, nem números de pacientes atendidos ou taxa de sucesso (decisão
+  da LPC-2). A confiança vem da transparência do processo e das credenciais da médica.
 
 <Unstyled>
   <DoDont
     doo={
       <>
-        “Sessões online por vídeo, de onde você estiver.”
+        “Com a estabilidade, os retornos vão ficando mais espaçados, no ritmo
+        que faz sentido para você.”
         <br />
-        “Agendar sessão”
+        “Agendar primeira consulta”
       </>
     }
     dont={
       <>
-        “Transforme sua vida em 7 dias!”
+        “Resultados em 30 dias.”
         <br />
-        “Clique aqui”
+        “Mais de 100 mil pacientes atendidos.”
       </>
     }
   />
 </Unstyled>
 
+## Privacidade (LGPD)
+
+Contato com psiquiatra permite inferir condição de saúde, que é dado sensível (LGPD, art. 11).
+Formulários coletam o mínimo: nunca peça motivo da consulta, sintomas, medicação ou texto livre.
+
 ## Microcopy de componentes
 
-| Componente     | Padrão                                                       |
-| -------------- | ------------------------------------------------------------ |
-| `Button`       | Verbo no infinitivo + objeto: "Agendar sessão"               |
-| `SectionLabel` | Substantivo curto que nomeia a seção: "Sobre nós", "Dúvidas" |
-| `Badge` (hero) | Frase curta de boas-vindas, sem ponto final                  |
-| Accordion      | Pergunta como a pessoa faria; resposta começa respondendo    |
-| `IconButton`   | `label` descreve a ação: "Próximo depoimento", "Abrir menu"  |
+| Componente     | Padrão                                                                 |
+| -------------- | ---------------------------------------------------------------------- |
+| `Button`       | Verbo no infinitivo + objeto: "Agendar primeira consulta"              |
+| `SectionLabel` | Substantivo curto que nomeia a seção: "Sobre a Dra. Helena", "Dúvidas" |
+| `Badge` (hero) | Frase curta que situa o atendimento, sem ponto final                   |
+| Accordion      | Pergunta como a pessoa faria; resposta começa respondendo              |
+| `IconButton`   | `label` descreve a ação: "Abrir menu", "Fechar menu"                   |

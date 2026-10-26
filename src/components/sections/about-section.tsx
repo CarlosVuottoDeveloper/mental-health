@@ -1,4 +1,4 @@
-import { Globe } from "lucide-react";
+import { Stethoscope } from "lucide-react";
 import type { ReactNode } from "react";
 import {
   Button,
@@ -13,18 +13,21 @@ import {
 } from "@/components/ui";
 
 export type AboutSectionProps = {
+  id?: string;
   label: string;
   statement: ReactNode;
-  community: ReactNode;
+  /** Name and registration (CRM/UF/RQE): CFM requires them in this section, not only in the footer. */
+  credentials: { name: string; detail: string };
   socials: SocialLinksProps["links"];
   cta: { label: string; href: string };
   media: [MediaShapeProps, MediaShapeProps, MediaShapeProps];
 };
 
 export function AboutSection({
+  id,
   label,
   statement,
-  community,
+  credentials,
   socials,
   cta,
   media,
@@ -32,7 +35,7 @@ export function AboutSection({
   const [first, wide, last] = media;
 
   return (
-    <section className="py-section">
+    <section id={id} className="scroll-mt-20 py-section">
       <Container className="flex flex-col gap-12 md:gap-16">
         <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-10">
           <SectionLabel>{label}</SectionLabel>
@@ -41,9 +44,18 @@ export function AboutSection({
 
         <div className="grid items-center gap-8 border-t border-border pt-8 md:grid-cols-[1fr_2fr] md:gap-10">
           <div className="flex items-center gap-4">
-            <Globe aria-hidden className="size-9 shrink-0" strokeWidth={1.25} />
+            <Stethoscope
+              aria-hidden
+              className="size-9 shrink-0"
+              strokeWidth={1.25}
+            />
             <span className="h-10 w-px bg-border-strong" aria-hidden />
-            <p className="text-body-sm">{community}</p>
+            <p className="text-body-sm">
+              <span className="block font-medium">{credentials.name}</span>
+              <span className="block text-foreground-muted">
+                {credentials.detail}
+              </span>
+            </p>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-6">
             <SocialLinks links={socials} highlight={socials[0]?.network} />

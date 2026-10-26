@@ -30,7 +30,7 @@ export type LogoProps = ComponentProps<"span"> & {
 };
 
 export function Logo({
-  name = "Mental Health",
+  name = "Dra. Helena Vasconcelos",
   tone = "default",
   className,
   ...props

@@ -7,7 +7,6 @@ export * from "./icon-button/icon-button";
 export * from "./logo/logo";
 export * from "./media-shape/media-shape";
 export * from "./pixel-band/pixel-band";
-export * from "./rating/rating";
 export * from "./section-label/section-label";
 export * from "./social-links/social-links";
 export * from "./tabs/tabs";

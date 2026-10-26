@@ -4,7 +4,7 @@ import { Button } from "./button";
 const meta = {
   title: "Componentes/Button",
   component: Button,
-  args: { children: "Agendar sessão" },
+  args: { children: "Agendar consulta" },
   argTypes: {
     variant: {
       control: "inline-radio",
@@ -33,7 +33,7 @@ export const Secondary: Story = {
   args: {
     variant: "secondary",
     withArrow: true,
-    children: "Falar com a equipe",
+    children: "Conhecer o atendimento",
   },
   globals: { backgrounds: { value: "inverse" } },
 };
@@ -59,7 +59,7 @@ export const AsLink: Story = {
   name: "Como link (asChild)",
   render: (args) => (
     <Button {...args} asChild>
-      <a href="#agendar">Agendar sessão</a>
+      <a href="#agendar">Agendar consulta</a>
     </Button>
   ),
   args: { variant: "accent", withArrow: true },
