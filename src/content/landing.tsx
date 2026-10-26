@@ -6,6 +6,7 @@ import type {
   FaqSectionProps,
   HeroProps,
   SiteFooterProps,
+  SpecialtiesSectionProps,
   SiteHeaderProps,
 } from "@/components/sections";
 import { whatsappUrl } from "@/lib/whatsapp";
@@ -24,6 +25,7 @@ export const anchors = {
   hero: "inicio",
   main: "conteudo",
   about: "sobre",
+  specialties: "especialidades",
   care: "como-funciona",
   faq: "duvidas",
   booking: "agendar",
@@ -50,9 +52,9 @@ export const whatsappHref = whatsappUrl(
 export const headerContent: Omit<SiteHeaderProps, "tone"> = {
   links: [
     { label: "Sobre", href: `/#${anchors.about}` },
+    { label: "Especialidades", href: `/#${anchors.specialties}` },
     { label: "Como funciona", href: `/#${anchors.care}` },
     { label: "Dúvidas", href: `/#${anchors.faq}` },
-    { label: "Agendamento", href: `/#${anchors.booking}` },
   ],
   contact: { label: "Agendar pelo WhatsApp", href: whatsappHref },
 };
@@ -115,6 +117,47 @@ export const aboutContent: AboutSectionProps = {
     { placeholder: "sun" },
     { placeholder: "sage" },
     { placeholder: "blush" },
+  ],
+};
+
+// LPC-11: how each condition shows up in daily life, never the clinical definition.
+export const specialtiesContent: SpecialtiesSectionProps = {
+  id: anchors.specialties,
+  label: "Especialidades",
+  title: "Como posso ajudar",
+  description:
+    "Atendimento a adultos, a partir de 18 anos. Se você se reconhece em alguma destas situações, uma conversa pode ajudar a entender o que está acontecendo.",
+  items: [
+    {
+      title: "Transtornos de ansiedade",
+      description:
+        "Preocupação constante, tensão no corpo ou crises que atrapalham o trabalho, o sono e a rotina.",
+    },
+    {
+      title: "Depressão",
+      description:
+        "Desânimo que não passa, perda de interesse pelo que antes fazia sentido e cansaço para as tarefas do dia.",
+    },
+    {
+      title: "TDAH em adultos",
+      description:
+        "Dificuldade crônica de organizar tarefas, prazos e atenção, com impacto no trabalho e nas relações.",
+    },
+    {
+      title: "Burnout e esgotamento profissional",
+      description:
+        "Exaustão ligada ao trabalho, distanciamento e sensação de não dar conta, mesmo depois de descansar.",
+    },
+    {
+      title: "Transtorno bipolar",
+      description:
+        "Fases de humor muito elevado ou irritável que se alternam com períodos de desânimo profundo.",
+    },
+    {
+      title: "Insônia e distúrbios do sono",
+      description:
+        "Dificuldade para pegar no sono, despertares durante a noite ou acordar sem se sentir descansado.",
+    },
   ],
 };
 
@@ -218,7 +261,10 @@ export const footerContent: SiteFooterProps = {
   columns: [
     {
       title: "Navegação",
-      links: headerContent.links,
+      links: [
+        ...headerContent.links,
+        { label: "Agendamento", href: `/#${anchors.booking}` },
+      ],
     },
     {
       title: "Contato",

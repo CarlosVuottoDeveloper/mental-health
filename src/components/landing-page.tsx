@@ -6,6 +6,7 @@ import {
   Hero,
   SiteFooter,
   SiteHeader,
+  SpecialtiesSection,
 } from "@/components/sections";
 import {
   aboutContent,
@@ -16,6 +17,7 @@ import {
   footerContent,
   headerContent,
   heroContent,
+  specialtiesContent,
 } from "@/content/landing";
 
 /**
@@ -35,6 +37,7 @@ export function LandingPage() {
       <main id={anchors.main}>
         <Hero {...heroContent} />
         <AboutSection {...aboutContent} />
+        <SpecialtiesSection {...specialtiesContent} />
         <CareStepsSection {...careStepsContent} />
         <FaqSection {...faqContent} />
         <CtaBanner {...ctaContent} />

@@ -5,3 +5,4 @@ export * from "./faq-section";
 export * from "./hero";
 export * from "./site-footer";
 export * from "./site-header";
+export * from "./specialties-section";
