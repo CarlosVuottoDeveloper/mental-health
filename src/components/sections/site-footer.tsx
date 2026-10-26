@@ -9,6 +9,7 @@ import {
 import type { NavLink } from "./site-header";
 
 export type SiteFooterProps = {
+  id?: string;
   description: string;
   /** Professional identification (name · specialty · CRM · RQE), required by CFM. */
   credentials: string;
@@ -24,6 +25,7 @@ export type SiteFooterProps = {
 };
 
 export function SiteFooter({
+  id,
   description,
   credentials,
   address,
@@ -35,7 +37,7 @@ export function SiteFooter({
   credit,
 }: SiteFooterProps) {
   return (
-    <footer className="pt-section pb-8">
+    <footer id={id} className="pt-section pb-8">
       <Container className="flex flex-col gap-16">
         <div className="grid gap-12 md:grid-cols-[1fr_auto]">
           <div className="flex max-w-sm flex-col gap-4">

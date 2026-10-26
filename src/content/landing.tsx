@@ -12,6 +12,7 @@ import type {
   SpecialtiesSectionProps,
   SiteHeaderProps,
 } from "@/components/sections";
+import { env } from "@/lib/env";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 /*
@@ -33,6 +34,7 @@ export const anchors = {
   care: "como-funciona",
   faq: "duvidas",
   location: "localizacao",
+  footer: "rodape",
   booking: "agendar",
 } as const;
 
@@ -62,11 +64,10 @@ export const practice = {
   },
 } as const;
 
-// LPC-18: the number will come from an environment variable (.env.local, decision D11).
-// Message combines LPC-1 and LPC-18 (decision D5 in docs/discovery/decisoes-do-projeto.md).
-const whatsappNumber = "5511900000000";
+// Number from NEXT_PUBLIC_WHATSAPP_NUMBER (LPC-18, decision D11). Message
+// combines LPC-1 and LPC-18 (decision D5).
 export const whatsappHref = whatsappUrl(
-  whatsappNumber,
+  env.whatsappNumber,
   "Olá, vim pelo site e gostaria de agendar uma primeira consulta com a Dra. Helena.",
 );
 
@@ -348,6 +349,7 @@ export const ctaContent: CtaBannerProps = {
 };
 
 export const footerContent: SiteFooterProps = {
+  id: anchors.footer,
   description:
     "Psiquiatria para adultos, com atendimento presencial na Vila Mariana, em São Paulo, e online para todo o Brasil.",
   credentials: credentialsLine,

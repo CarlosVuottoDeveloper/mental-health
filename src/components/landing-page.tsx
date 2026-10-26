@@ -9,6 +9,7 @@ import {
   SiteFooter,
   SiteHeader,
   SpecialtiesSection,
+  WhatsAppButton,
 } from "@/components/sections";
 import {
   aboutContent,
@@ -22,6 +23,7 @@ import {
   heroContent,
   locationContent,
   specialtiesContent,
+  whatsappHref,
 } from "@/content/landing";
 
 /**
@@ -49,6 +51,11 @@ export function LandingPage() {
         <CtaBanner {...ctaContent} />
       </main>
       <SiteFooter {...footerContent} />
+      <WhatsAppButton
+        href={whatsappHref}
+        label="Agendar pelo WhatsApp"
+        hideOverIds={[anchors.hero, anchors.footer]}
+      />
     </>
   );
 }

@@ -8,3 +8,4 @@ export * from "./location-section";
 export * from "./site-footer";
 export * from "./site-header";
 export * from "./specialties-section";
+export * from "./whatsapp-button";
