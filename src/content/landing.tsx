@@ -4,6 +4,7 @@ import type {
   AboutSectionProps,
   BenefitsSectionProps,
   CareStepsSectionProps,
+  ContactSectionProps,
   CtaBannerProps,
   FaqSectionProps,
   HeroProps,
@@ -36,6 +37,7 @@ export const anchors = {
   location: "localizacao",
   footer: "rodape",
   booking: "agendar",
+  contact: "contato",
 } as const;
 
 // Placeholder registration numbers on purpose (LPC-1), to never match a real doctor.
@@ -344,8 +346,23 @@ export const ctaContent: CtaBannerProps = {
   id: anchors.booking,
   title: "Cuidar da sua saúde mental começa com uma boa conversa",
   primary: { label: "Agendar pelo WhatsApp", href: whatsappHref },
+  secondary: {
+    label: "Prefiro deixar meus dados",
+    href: `/#${anchors.contact}`,
+  },
   // Hours from the briefing, including online Saturdays (decision D4).
   note: `${practice.hours.weekdays}; ${practice.hours.saturday.toLowerCase()}. As mensagens costumam ser respondidas até o fim do dia.`,
+};
+
+// LPC-16: minimal data only (LGPD art. 11).
+export const contactContent: Omit<ContactSectionProps, "endpoint"> = {
+  id: anchors.contact,
+  label: "Contato",
+  title: "Prefere que a gente entre em contato?",
+  description:
+    "Deixe seu nome e um telefone e escolha um período para o retorno. Não pedimos o motivo da consulta: essa conversa fica para o atendimento.",
+  privacyHref: "/politica-de-privacidade",
+  whatsappHref,
 };
 
 export const footerContent: SiteFooterProps = {

@@ -3,6 +3,7 @@ export * from "./avatar/avatar";
 export * from "./badge/badge";
 export * from "./button/button";
 export * from "./container/container";
+export * from "./form/form";
 export * from "./icon-button/icon-button";
 export * from "./logo/logo";
 export * from "./media-shape/media-shape";

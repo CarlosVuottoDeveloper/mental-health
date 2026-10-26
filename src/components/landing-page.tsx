@@ -2,6 +2,7 @@ import {
   AboutSection,
   BenefitsSection,
   CareStepsSection,
+  ContactSection,
   CtaBanner,
   FaqSection,
   Hero,
@@ -16,6 +17,7 @@ import {
   anchors,
   benefitsContent,
   careStepsContent,
+  contactContent,
   ctaContent,
   faqContent,
   footerContent,
@@ -49,6 +51,7 @@ export function LandingPage() {
         <FaqSection {...faqContent} />
         <LocationSection {...locationContent} />
         <CtaBanner {...ctaContent} />
+        <ContactSection {...contactContent} />
       </main>
       <SiteFooter {...footerContent} />
       <WhatsAppButton

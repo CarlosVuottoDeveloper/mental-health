@@ -3,6 +3,7 @@ import {
   aboutContent,
   benefitsContent,
   careStepsContent,
+  contactContent,
   ctaContent,
   faqContent,
   footerContent,
@@ -14,6 +15,7 @@ import {
 import { AboutSection } from "./about-section";
 import { BenefitsSection } from "./benefits-section";
 import { CareStepsSection } from "./care-steps-section";
+import { ContactSection } from "./contact-section";
 import { CtaBanner } from "./cta-banner";
 import { FaqSection } from "./faq-section";
 import { Hero } from "./hero";
@@ -115,6 +117,19 @@ export const Location: Story = {
 export const Cta: Story = {
   name: "Agendamento (CTA)",
   render: () => <CtaBanner {...ctaContent} />,
+};
+
+export const Contact: Story = {
+  name: "Contato (formulário)",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "No Storybook não há API: enviar um formulário válido mostra o estado de erro, com o atalho para o WhatsApp.",
+      },
+    },
+  },
+  render: () => <ContactSection {...contactContent} />,
 };
 
 export const Footer: Story = {
