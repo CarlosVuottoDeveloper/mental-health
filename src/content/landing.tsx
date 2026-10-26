@@ -1,6 +1,8 @@
+import { Clock, MessageCircle, ReceiptText, Users } from "lucide-react";
 import { HeadingMuted } from "@/components/ui";
 import type {
   AboutSectionProps,
+  BenefitsSectionProps,
   CareStepsSectionProps,
   CtaBannerProps,
   FaqSectionProps,
@@ -26,6 +28,7 @@ export const anchors = {
   main: "conteudo",
   about: "sobre",
   specialties: "especialidades",
+  benefits: "atendimento",
   care: "como-funciona",
   faq: "duvidas",
   booking: "agendar",
@@ -157,6 +160,39 @@ export const specialtiesContent: SpecialtiesSectionProps = {
       title: "Insônia e distúrbios do sono",
       description:
         "Dificuldade para pegar no sono, despertares durante a noite ou acordar sem se sentir descansado.",
+    },
+  ],
+};
+
+// LPC-12: the care process, not results. Durations follow decision D3.
+export const benefitsContent: BenefitsSectionProps = {
+  id: anchors.benefits,
+  label: "Atendimento",
+  title: "Como é ser atendido aqui",
+  items: [
+    {
+      icon: Clock,
+      title: "Consultas sem pressa",
+      description:
+        "Primeira consulta de cerca de 60 minutos e retornos de 50 minutos, com tempo para ouvir sua história.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Contato entre as consultas",
+      description:
+        "Dúvidas sobre o tratamento e possíveis efeitos colaterais podem ser enviadas pelo WhatsApp entre um retorno e outro.",
+    },
+    {
+      icon: Users,
+      title: "Trabalho integrado",
+      description:
+        "Se você faz psicoterapia, o acompanhamento pode ser alinhado com o seu psicólogo, sempre com a sua autorização.",
+    },
+    {
+      icon: ReceiptText,
+      title: "Recibo para reembolso",
+      description:
+        "O atendimento é particular, com recibo ou nota fiscal para solicitar reembolso ao seu plano de saúde.",
     },
   ],
 };

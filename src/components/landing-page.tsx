@@ -1,5 +1,6 @@
 import {
   AboutSection,
+  BenefitsSection,
   CareStepsSection,
   CtaBanner,
   FaqSection,
@@ -11,6 +12,7 @@ import {
 import {
   aboutContent,
   anchors,
+  benefitsContent,
   careStepsContent,
   ctaContent,
   faqContent,
@@ -38,6 +40,7 @@ export function LandingPage() {
         <Hero {...heroContent} />
         <AboutSection {...aboutContent} />
         <SpecialtiesSection {...specialtiesContent} />
+        <BenefitsSection {...benefitsContent} />
         <CareStepsSection {...careStepsContent} />
         <FaqSection {...faqContent} />
         <CtaBanner {...ctaContent} />
