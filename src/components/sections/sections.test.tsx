@@ -56,24 +56,71 @@ describe("FaqSection", () => {
 });
 
 describe("SiteHeader", () => {
-  it("toggles the mobile menu", async () => {
+  const props = {
+    links: [
+      { label: "Sobre", href: "/#sobre" },
+      { label: "Dúvidas", href: "/#duvidas" },
+    ],
+    contact: { label: "Agendar pelo WhatsApp", href: "https://wa.me/1" },
+  };
+
+  async function openMenu() {
     const user = userEvent.setup();
-    render(
-      <SiteHeader
-        links={[{ label: "Sobre", href: "#sobre" }]}
-        contact={{ label: "Fale conosco", href: "#contato" }}
-      />,
-    );
+    render(<SiteHeader {...props} />);
+    await user.click(screen.getByRole("button", { name: "Abrir menu" }));
+    return user;
+  }
 
-    const toggle = screen.getByRole("button", { name: "Abrir menu" });
-    expect(toggle).toHaveAttribute("aria-expanded", "false");
-
-    await user.click(toggle);
+  it("toggles the mobile menu", async () => {
+    await openMenu();
     expect(screen.getByRole("button", { name: "Fechar menu" })).toHaveAttribute(
       "aria-expanded",
       "true",
     );
     expect(document.getElementById("site-menu")).toBeInTheDocument();
+  });
+
+  it("closes the menu with Escape and returns focus to the toggle", async () => {
+    const user = await openMenu();
+    await user.keyboard("{Escape}");
+
+    const toggle = screen.getByRole("button", { name: "Abrir menu" });
+    expect(document.getElementById("site-menu")).not.toBeInTheDocument();
+    expect(toggle).toHaveFocus();
+  });
+
+  it("keeps Tab inside the open menu", async () => {
+    const user = await openMenu();
+    const menu = within(document.getElementById("site-menu")!);
+    const lastItem = menu.getByRole("link", { name: "Agendar pelo WhatsApp" });
+
+    lastItem.focus();
+    await user.tab();
+    expect(screen.getByRole("button", { name: "Fechar menu" })).toHaveFocus();
+
+    await user.tab({ shift: true });
+    expect(lastItem).toHaveFocus();
+  });
+
+  it("closes the menu after choosing a section", async () => {
+    const user = await openMenu();
+    const menu = within(document.getElementById("site-menu")!);
+    await user.click(menu.getByRole("link", { name: "Sobre" }));
+    expect(document.getElementById("site-menu")).not.toBeInTheDocument();
+  });
+
+  it("is solid by default", () => {
+    const { container } = render(<SiteHeader {...props} />);
+    expect(container.querySelector("header")).toHaveClass("bg-background/95");
+  });
+
+  it("starts transparent when it floats over an overlay target", () => {
+    const { container } = render(
+      <SiteHeader {...props} overlayTargetId="inicio" />,
+    );
+    expect(container.querySelector("header")).not.toHaveClass(
+      "bg-background/95",
+    );
   });
 });
 
