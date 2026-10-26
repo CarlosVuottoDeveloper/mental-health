@@ -23,6 +23,7 @@ import {
   preferenceOptions,
   type ContactData,
 } from "@/lib/contact-schema";
+import { trackEvent } from "@/lib/analytics";
 
 export type ContactSectionProps = {
   id?: string;
@@ -104,6 +105,7 @@ function ContactForm({
       if (!response.ok) throw new Error(String(response.status));
       reset();
       setStatus("success");
+      trackEvent({ name: "contact_form_submit", source: "formulario" });
     } catch {
       setStatus("error");
     }
