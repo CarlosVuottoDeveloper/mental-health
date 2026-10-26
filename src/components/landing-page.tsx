@@ -15,6 +15,8 @@ import {
 import {
   aboutContent,
   anchors,
+  practice,
+  professional,
   benefitsContent,
   careStepsContent,
   contactContent,
@@ -27,6 +29,9 @@ import {
   specialtiesContent,
   whatsappHref,
 } from "@/content/landing";
+import { env } from "@/lib/env";
+import { faqPageJsonLd, physicianJsonLd } from "@/lib/structured-data";
+import { JsonLd } from "./json-ld";
 
 /**
  * The landing page: implemented sections in the order defined in LPC-3.
@@ -54,6 +59,19 @@ export function LandingPage() {
         <ContactSection {...contactContent} />
       </main>
       <SiteFooter {...footerContent} />
+      <JsonLd
+        data={physicianJsonLd({
+          name: professional.name,
+          url: env.siteUrl,
+          telephone: "+55-11-90000-0000",
+          email: practice.email.label,
+          street: practice.address[0],
+          locality: "São Paulo",
+          region: "SP",
+          description: heroContent.description,
+        })}
+      />
+      <JsonLd data={faqPageJsonLd(faqContent.categories)} />
       <WhatsAppButton
         href={whatsappHref}
         label="Agendar pelo WhatsApp"
