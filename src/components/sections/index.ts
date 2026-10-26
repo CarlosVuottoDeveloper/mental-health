@@ -1,6 +1,7 @@
 export * from "./about-section";
 export * from "./benefits-section";
 export * from "./care-steps-section";
+export * from "./cookie-banner";
 export * from "./cta-banner";
 export * from "./faq-section";
 export * from "./hero";

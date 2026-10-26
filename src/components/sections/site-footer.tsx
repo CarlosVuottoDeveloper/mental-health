@@ -6,6 +6,7 @@ import {
   Text,
   type SocialLinksProps,
 } from "@/components/ui";
+import { CookiePreferencesButton } from "./cookie-banner";
 import type { NavLink } from "./site-header";
 
 export type SiteFooterProps = {
@@ -96,6 +97,9 @@ export function SiteFooter({
                   </a>
                 </li>
               ))}
+              <li>
+                <CookiePreferencesButton />
+              </li>
             </ul>
           </div>
         </div>
