@@ -23,7 +23,7 @@ export const privacyPolicy = {
       body: [
         "Formulário de contato: nome, e-mail, telefone, preferência de atendimento (presencial ou online) e melhor período para retorno. Não pedimos motivo da consulta, sintomas, histórico ou medicações, e o formulário não tem campo de texto livre.",
         "WhatsApp: ao clicar em um botão de WhatsApp, a conversa acontece no aplicativo, sujeita à política de privacidade do WhatsApp.",
-        "Navegação: medimos visitas de forma anônima, sem cookies, com o Vercel Analytics. O Google Analytics só é carregado se você aceitar os cookies de análise.",
+        "Navegação: medimos visitas e o desempenho das páginas de forma anônima, sem cookies, com o Vercel Analytics e o Speed Insights. O Google Analytics só é carregado se você aceitar os cookies de análise.",
       ],
     },
     {

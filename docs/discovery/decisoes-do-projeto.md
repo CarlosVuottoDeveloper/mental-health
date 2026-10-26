@@ -143,3 +143,16 @@ por IP) e confirma sem enviar e-mail.
 **Por quê:** num consultório real, um formulário que finge enviar seria uma falha grave; por isso o
 padrão é falhar de forma visível. Já no portfólio publicado, sem conta de e-mail, o fluxo completo
 precisa ser demonstrável. O modo é opt-in e documentado no `.env.example`.
+
+## D15 — Analytics e consentimento
+
+**Decisão:** o Vercel Analytics e o Speed Insights carregam sem pedir consentimento, só em deploys
+da Vercel. O GA4 só carrega depois do aceite e se `NEXT_PUBLIC_GA_MEASUREMENT_ID` estiver definido;
+se a pessoa recusar depois, o GA é desligado e os cookies `_ga` são apagados. Os eventos de
+conversão (WhatsApp, telefone, "Como chegar" e envio do formulário) vêm de um único ouvinte de
+cliques, com a origem tirada do `data-cta` ou da seção do link.
+
+**Por quê:** as ferramentas da Vercel não usam cookies nem identificam a pessoa, o que a política
+de privacidade explica; o GA4 usa cookies e por isso depende do aceite (LPC-24). O ouvinte único
+evita espalhar código de rastreamento pelos componentes e garante que nenhum dado pessoal entra nos
+eventos.

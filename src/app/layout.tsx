@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SiteAnalytics } from "@/components/analytics";
 import { CookieBanner } from "@/components/sections";
 import { env } from "@/lib/env";
 import { fontVariables } from "./fonts";
@@ -41,6 +42,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         {children}
         <CookieBanner policyHref="/politica-de-privacidade" />
+        <SiteAnalytics
+          gaMeasurementId={env.gaMeasurementId}
+          // Set by Vercel at build time; false locally and on other hosts.
+          onVercel={process.env.VERCEL === "1"}
+        />
       </body>
     </html>
   );
