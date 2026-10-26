@@ -276,7 +276,7 @@ export const faqContent: FaqSectionProps = {
         {
           question: "O atendimento online funciona tanto quanto o presencial?",
           answer:
-            "Para a maioria dos casos, sim. A teleconsulta é feita por vídeo, conforme a Resolução CFM nº 2.314/2022, e as receitas são emitidas com assinatura digital.",
+            "Para a maioria das pessoas, sim. A teleconsulta é feita por vídeo, conforme a Resolução CFM nº 2.314/2022, e as receitas são emitidas com assinatura digital. Se a avaliação indicar a necessidade de uma consulta presencial, isso é combinado com você.",
         },
         {
           question: "Vocês atendem convênio?",

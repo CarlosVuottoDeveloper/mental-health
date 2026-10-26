@@ -167,6 +167,15 @@ describe("LandingPage", () => {
     ["superlativos", /\b(o|a) melhor\b|refer[êe]ncia em|n[º°] ?1/i],
     ["preços", /R\$\s?\d/],
     ["número de pacientes", /\d+\s*mil\s+(pessoas|pacientes)/i],
+    [
+      "urgência ou escassez",
+      /últimas vagas|vagas limitadas|imperdível|só hoje|corra/i,
+    ],
+    [
+      "comparação com outros profissionais",
+      /melhor que|diferente dos outros|único (psiquiatra|médico)/i,
+    ],
+    ["antes e depois", /antes e depois/i],
   ])("has no %s in the copy", (_, pattern) => {
     const { container } = render(<LandingPage />);
     expect(container.textContent).not.toMatch(pattern);
