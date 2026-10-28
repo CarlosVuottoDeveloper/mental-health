@@ -34,7 +34,7 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | D9  | Seção "Presencial ou online" | Incorporada à LPC-15, como dois cards                                                             | LPC-15                                |
 | D10 | Montagem da página           | `src/app/page.tsx` monta as seções prontas com o mesmo `LandingPage` do Storybook                 | LPC-8                                 |
 | D11 | Ordem da publicação          | Vercel (LPC-7) e domínio (LPC-25) por último; variáveis de ambiente locais até lá                 | LPC-7, LPC-17, LPC-18, LPC-25, LPC-27 |
-| D12 | Fotos                        | Sem fotos de banco com pessoas identificáveis como a médica; placeholders até a curadoria manual  | LPC-9, LPC-10, LPC-15                 |
+| D12 | Fotos                        | Fotos do Pexels, sem pessoas identificáveis no papel da médica                                    | LPC-9, LPC-10, LPC-15                 |
 | D13 | Mapa                         | Embed do OpenStreetMap (sem cookies), região da estação Ana Rosa                                  | LPC-15, LPC-24                        |
 | D14 | Formulário no portfólio      | `CONTACT_SIMULATE=true` liga um modo de demonstração explícito                                    | LPC-17                                |
 | D15 | Analytics                    | Vercel (sem cookies) sempre; GA4 só após consentimento; eventos por um ouvinte único              | LPC-26                                |

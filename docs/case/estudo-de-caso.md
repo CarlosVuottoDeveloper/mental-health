@@ -81,7 +81,7 @@ _A completar após o deploy: Lighthouse na URL publicada e QA em dispositivos re
 
 ## O que eu faria diferente num projeto real
 
-- Fotografia própria do consultório, em vez de placeholders.
+- Fotografia própria do consultório e da profissional, em vez de fotos de banco de imagens.
 - Validação jurídica da política de privacidade e revisão da copy com a profissional.
 - Um limite de envios por IP compartilhado entre instâncias (por exemplo, Redis), se o tráfego
   justificar.

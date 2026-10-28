@@ -4,6 +4,17 @@ Todas as mudanças relevantes deste projeto são documentadas aqui.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o projeto usa
 [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [Não lançado]
+
+### Adicionado
+
+- Fotos do Pexels no hero, na seção "Sobre" e na localização, sem pessoas identificáveis no papel
+  da médica (D12).
+
+### Alterado
+
+- Degradê do hero mais escuro, para manter o menu e os textos acima de 4,5:1 sobre a foto.
+
 ## [0.2.0] - 2026-10-26
 
 Landing page completa da Dra. Helena Vasconcelos (cliente fictícia), cobrindo as tasks do quadro
@@ -55,5 +66,6 @@ LPC que não dependem da publicação.
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
+[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...HEAD
 [0.2.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.1.0
