@@ -205,8 +205,8 @@ Web Analytics e Speed Insights estão ativos no projeto.
   página abaixo mostra o autor:
   - Hero: [poltrona e parede de plantas](https://www.pexels.com/photo/6585744/)
   - Sobre: [poltrona junto à janela](https://www.pexels.com/photo/16269026/)
-  - Detalhes: [sombra de folhas em ocre](https://www.pexels.com/photo/6423451/) (Allec Gomes),
-    [mão anotando](https://www.pexels.com/photo/8430301/) (Kampus Production) e
-    [sombra de planta na parede](https://www.pexels.com/photo/4207776/)
+  - Detalhes: [folhas de oliveira](https://www.pexels.com/photo/16841999/),
+    [chá e livros](https://www.pexels.com/photo/4186904/) e
+    [parede de cal com cadeira](https://www.pexels.com/photo/27522843/)
   - Fachada: [varandas em São Paulo](https://www.pexels.com/photo/34147115/) (Rafaela Gonçalves
     Sanches)
