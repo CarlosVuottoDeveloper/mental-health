@@ -1,3 +1,4 @@
+import { CircleAlert } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
@@ -15,8 +16,13 @@ export function FieldError({
 }) {
   if (!children) return null;
   return (
-    <p id={fieldErrorId(id)} className="text-body-sm text-danger">
-      {children}
+    <p
+      id={fieldErrorId(id)}
+      className="flex items-start gap-1.5 text-body-sm text-danger"
+    >
+      {/* The icon repeats the message's meaning without relying on colour. */}
+      <CircleAlert aria-hidden className="mt-0.5 size-4 shrink-0" />
+      <span>{children}</span>
     </p>
   );
 }

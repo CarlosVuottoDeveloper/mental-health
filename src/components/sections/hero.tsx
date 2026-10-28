@@ -70,41 +70,39 @@ export function Hero({
 
       {header}
 
-      <Container className="mt-auto flex flex-col gap-10 pt-24 pb-10">
-        <div className="flex flex-col gap-6">
-          <Badge variant="glass" className="self-start">
-            <Sparkle aria-hidden className="text-accent" />
-            {badge}
-          </Badge>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <Heading as="h1" size="2xl" tone="inverse" className="max-w-[22ch]">
-              {title}
-            </Heading>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 lg:shrink-0">
-              <Button variant="accent" withArrow asChild>
-                <a href={cta.href}>{cta.label}</a>
-              </Button>
-              {secondaryCta && (
-                <Button
-                  variant="link"
-                  asChild
-                  className="focus-visible:outline-ring-inverse"
-                >
-                  <a href={secondaryCta.href}>{secondaryCta.label}</a>
-                </Button>
-              )}
-            </div>
-          </div>
+      {/* One left-aligned column in reading order: what, for whom, how to start, who. */}
+      <Container className="mt-auto flex flex-col items-start gap-6 pt-28 pb-10 md:pb-14">
+        <Badge variant="glass">
+          <Sparkle aria-hidden className="text-accent" />
+          {badge}
+        </Badge>
+        <Heading as="h1" size="2xl" tone="inverse" className="max-w-[18ch]">
+          {title}
+        </Heading>
+        <Text size="lg" tone="inverse" className="max-w-[52ch] opacity-90">
+          {description}
+        </Text>
+        <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Button variant="accent" withArrow asChild>
+            <a href={cta.href}>{cta.label}</a>
+          </Button>
+          {secondaryCta && (
+            <Button
+              variant="link"
+              asChild
+              className="focus-visible:outline-ring-inverse"
+            >
+              <a href={secondaryCta.href}>{secondaryCta.label}</a>
+            </Button>
+          )}
         </div>
-
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <Text size="caption" tone="inverse" className="uppercase">
-            {credentials}
-          </Text>
-          <Text size="sm" tone="inverse" className="max-w-[46ch] opacity-90">
-            {description}
-          </Text>
-        </div>
+        <Text
+          size="caption"
+          tone="inverse"
+          className="mt-6 border-t border-inverse-foreground/20 pt-4 opacity-90"
+        >
+          {credentials}
+        </Text>
       </Container>
     </section>
   );

@@ -158,3 +158,31 @@ cliques, com a origem tirada do `data-cta` ou da seção do link.
 de privacidade explica; o GA4 usa cookies e por isso depende do aceite (LPC-24). O ouvinte único
 evita espalhar código de rastreamento pelos componentes e garante que nenhum dado pessoal entra nos
 eventos.
+
+## D16 — Layout a partir do wireframe da LPC-3
+
+**Decisão:** o layout segue o wireframe de baixa fidelidade gerado no Claude Design a partir do
+prompt em `docs/design/prompt-wireframe-claude-design.md`. Mudou a estrutura, não a identidade
+visual (D1):
+
+- Hero em uma coluna, na ordem de leitura: selo, título, descrição, CTAs e identificação
+  profissional.
+- "Sobre" com o retrato à esquerda; o rótulo "Sobre a Dra. Helena" passa a ser o h2 da seção e a
+  frase grande, um parágrafo de destaque.
+- Rótulos de seção só no "Sobre"; nas demais, o título já diz o que a seção é.
+- Atendimento em quatro colunas, FAQ em duas colunas, cards "Presencial" e "Online" com o mesmo
+  peso, e faixas de fundo em Especialidades e Localização.
+- "Como funciona o acompanhamento" deixa de ser um bloco escuro: o escuro fica só na faixa de
+  agendamento, a ação principal da página.
+- Menu do celular em tela cheia, CTA do header sempre preenchido, botões do banner de cookies com o
+  mesmo estilo, erros de formulário com ícone e texto, sucesso com foco no título e link para o
+  WhatsApp, aviso de emergência em caixa com borda e áreas de toque de 44 px.
+
+**Onde o site não segue o wireframe, e por quê:**
+
+- **Textos:** o wireframe reescreveu parte da copy e usa marcadores como `[instituição]`. O site
+  mantém os textos revisados contra a CFM (LPC-23).
+- **Ícones nas especialidades:** o wireframe desenha um ícone em cada card. Ícone para diagnóstico
+  psiquiátrico tende a ser reducionista ou estigmatizante; os cards ficam só com texto.
+- **Faixa pixelada** do bloco de agendamento mantida: é o único gesto gráfico da marca (D1) e não
+  aparece num wireframe em escala de cinza.

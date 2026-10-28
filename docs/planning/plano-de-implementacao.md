@@ -38,6 +38,7 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | D13 | Mapa                         | Embed do OpenStreetMap (sem cookies), região da estação Ana Rosa                                  | LPC-15, LPC-24                        |
 | D14 | Formulário no portfólio      | `CONTACT_SIMULATE=true` liga um modo de demonstração explícito                                    | LPC-17                                |
 | D15 | Analytics                    | Vercel (sem cookies) sempre; GA4 só após consentimento; eventos por um ouvinte único              | LPC-26                                |
+| D16 | Layout do wireframe          | Estrutura do wireframe da LPC-3; textos revisados, sem ícones de diagnóstico                      | LPC-3                                 |
 
 ## Ordem de execução
 
@@ -45,7 +46,7 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | ----- | ------ | ------------------------------------------------------------ | --------------------- | ---------------------- | ---- |
 | 1     | LPC-1  | Briefing e coleta de conteúdo com a cliente                  | 0 · Descoberta        | —                      | ✅   |
 | 2     | LPC-2  | Definir com a cliente o destino da seção de depoimentos      | 0 · Descoberta        | LPC-1                  | ✅   |
-| 3     | LPC-3  | Referências e wireframe mobile-first                         | 1 · Design            | LPC-1, LPC-2           | ⬜   |
+| 3     | LPC-3  | Referências e wireframe mobile-first                         | 1 · Design            | LPC-1, LPC-2           | 🟡   |
 | 4     | LPC-4  | Design system e layouts mobile, tablet e desktop no Figma    | 1 · Design            | LPC-3                  | ✅   |
 | 5     | LPC-5  | Criar repositório com Next.js 15 + TypeScript                | 2 · Fundação          | —                      | 🟡   |
 | 6     | LPC-6  | Tailwind com tokens, ESLint, Prettier e Husky                | 2 · Fundação          | LPC-4, LPC-5           | ✅   |
@@ -108,9 +109,10 @@ tela, na URL publicada.
 **LPC-28 — Handoff** 🟡 · README completo e rascunho do case em `docs/case/estudo-de-caso.md`.
 Faltam os números de Lighthouse da URL publicada e a lista final de acessos.
 
-**LPC-3 — Referências e wireframe** ⬜ · Trabalho de design não feito em código. O design system e as
-stories de página cumprem o papel de layout de referência (D1), mas o levantamento de referências e
-o wireframe de baixa fidelidade não foram produzidos.
+**LPC-3 — Referências e wireframe** 🟡 · O wireframe mobile-first (celular, tablet e desktop, com
+anotações e estados) foi gerado no Claude Design a partir de
+`docs/design/prompt-wireframe-claude-design.md`, e o layout do site foi ajustado a ele (D16). Falta o
+levantamento de 5 a 8 referências.
 
 **LPC-5 — Repositório** 🟡 · Falta só a proteção da branch `main` no GitHub (configuração do
 repositório).
