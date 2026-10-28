@@ -55,7 +55,8 @@ export function AboutSection({
         <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-[1fr_2fr]">
           <MediaShape
             shape="rounded"
-            sizes="(min-width: 768px) 33vw, 100vw"
+            // max-w-sm caps it at 24rem below md.
+            sizes="(min-width: 768px) 33vw, min(100vw, 24rem)"
             className="w-full max-md:max-w-sm"
             {...portrait}
           />

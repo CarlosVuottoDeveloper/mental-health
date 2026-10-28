@@ -97,6 +97,10 @@ export const heroContent: Omit<HeroProps, "header"> = {
     href: `/#${anchors.about}`,
   },
   credentials: credentialsLine,
+  image: {
+    src: "/images/hero-consultorio.jpg",
+    alt: "Poltrona e pufe cinza diante de uma parede de plantas, em uma sala clara",
+  },
 };
 
 // LPC-10, built from the LPC-1 "Sobre" text. Institutions are fictitious on purpose.
@@ -125,10 +129,10 @@ export const aboutContent: AboutSectionProps = {
     { label: "Residência médica", value: "Psiquiatria · Hospital Fictício" },
     { label: "Atuação", value: "Mais de 10 anos, atendimento de adultos" },
   ],
-  // No stock photos of identifiable people as the doctor (decision D12).
+  // Pexels photos without an identifiable person standing in for the doctor (decision D12).
   portrait: {
-    placeholder: "sage",
-    alt: "Consultório da Dra. Helena Vasconcelos",
+    src: "/images/sobre-poltrona.jpg",
+    alt: "Poltrona bege ao lado de uma janela com plantas, no consultório",
   },
   socials: [
     { network: "instagram", href: "https://instagram.com" },
@@ -139,9 +143,12 @@ export const aboutContent: AboutSectionProps = {
     href: `/#${anchors.care}`,
   },
   media: [
-    { placeholder: "sun" },
-    { placeholder: "sage" },
-    { placeholder: "blush" },
+    { src: "/images/detalhe-folhas-ocre.jpg", alt: "" },
+    {
+      src: "/images/detalhe-anotacoes.jpg",
+      alt: "Mão anotando em um caderno durante uma conversa",
+    },
+    { src: "/images/detalhe-sombra-folhas.jpg", alt: "" },
   ],
 };
 
@@ -338,7 +345,10 @@ export const locationContent: LocationSectionProps = {
     caption:
       "Região da estação Ana Rosa. O endereço do consultório é fictício (projeto de portfólio). Mapa © colaboradores do OpenStreetMap.",
   },
-  facade: { placeholder: "blush", alt: "Fachada do prédio do consultório" },
+  facade: {
+    src: "/images/fachada.jpg",
+    alt: "Fachada de um prédio residencial com varandas e plantas, em São Paulo",
+  },
 };
 
 // Booking block (LPC-19): WhatsApp only, no calendar integration.

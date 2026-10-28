@@ -55,7 +55,9 @@ export function Hero({
           src={image.src}
           alt={image.alt}
           fill
-          priority
+          // Above the fold but not the LCP element (the h1 is), so no <head> preload
+          // competing with the display font.
+          loading="eager"
           sizes="100vw"
           className="-z-20 object-cover"
         />
@@ -63,7 +65,7 @@ export function Hero({
       {/* Scrim keeps text legible over any photograph. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-linear-to-t from-ink-950/70 via-ink-950/20 to-ink-950/30"
+        className="absolute inset-0 -z-10 bg-linear-to-t from-ink-950/85 via-ink-950/50 to-ink-950/65"
       />
 
       {header}

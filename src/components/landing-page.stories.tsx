@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A página real (`src/app/page.tsx`) com as seções já implementadas, na ordem da LPC-3. As fotos são placeholders em gradiente até a chegada das imagens.",
+          "A página real (`src/app/page.tsx`) com as seções já implementadas, na ordem da LPC-3. As fotos vêm do Pexels (decisão D12).",
       },
     },
   },
