@@ -6,6 +6,10 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+## [0.3.1] - 2026-10-28
+
+Publicação na Vercel.
+
 ### Adicionado
 
 - Site publicado na Vercel em https://dra-helena-vasconcelos.vercel.app (LPC-7), com previews por branch e PR, e decisão
@@ -86,7 +90,8 @@ LPC que não dependem da publicação.
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
-[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.0...HEAD
+[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.1.0
