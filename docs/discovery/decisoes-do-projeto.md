@@ -109,19 +109,21 @@ publicada.
 
 ## D12 — Fotos
 
-**Decisão:** não usar fotos de banco de imagens com pessoas identificáveis representando a Dra.
-Helena. As áreas de foto (hero, retrato do "Sobre", consultório, fachada) usam os placeholders em
-gradiente do design system até a escolha manual de fotos de ambiente (consultório, luz natural,
-plantas), com créditos registrados no README.
+**Decisão:** fotos do **Pexels** (licença livre, sem exigência de crédito), sem nenhuma pessoa
+identificável representando a Dra. Helena. O retrato do "Sobre" mostra o consultório (poltrona,
+janela e plantas), e a única foto com pessoa é um detalhe de mão anotando num caderno, sem rosto. O
+hero usa uma sala com parede de plantas, que conversa com a paleta sálvia, e a fachada é um prédio
+de São Paulo. Os créditos ficam no README.
 
 **Por quê:**
 
 - Apresentar o modelo de uma foto de banco como psiquiatra, num contexto de saúde mental, cria uma
-  associação falsa com uma pessoa real.
-- O Unsplash bloqueia acesso automatizado, e as fotos livres encontradas no Wikimedia Commons não
-  seguem a direção de arte. A curadoria das fotos fica como trabalho manual.
-- Os componentes já aceitam `src` e `alt`, então trocar o placeholder pela foto é só editar
-  `src/content/landing.tsx`.
+  associação falsa com uma pessoa real, e a licença do Pexels não permite sugerir que as pessoas das
+  fotos endossam o serviço.
+- Também ficaram de fora cenas de "paciente em sofrimento" (mão na cabeça, choro), comuns nos
+  bancos de imagem: reforçam estigma e contrariam o tom da página.
+- Com a foto no hero, o degradê sobre a imagem ficou mais escuro para manter todos os textos acima
+  de 4,5:1 de contraste, medido sobre os pixels mais claros atrás de cada texto.
 
 ## D13 — Mapa sem cookies de terceiros
 
