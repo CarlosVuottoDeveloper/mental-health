@@ -143,12 +143,13 @@ export const aboutContent: AboutSectionProps = {
     href: `/#${anchors.care}`,
   },
   media: [
-    { src: "/images/detalhe-folhas-ocre.jpg", alt: "" },
+    // Ambience only, in the site's olive, sage and cream tones.
+    { src: "/images/detalhe-oliveira.jpg", alt: "" },
     {
-      src: "/images/detalhe-anotacoes.jpg",
-      alt: "Mão anotando em um caderno durante uma conversa",
+      src: "/images/detalhe-cha-livros.jpg",
+      alt: "Xícara de chá, livros verdes e folhagens sobre uma mesa de madeira",
     },
-    { src: "/images/detalhe-sombra-folhas.jpg", alt: "" },
+    { src: "/images/detalhe-parede-cal.jpg", alt: "" },
   ],
 };
 

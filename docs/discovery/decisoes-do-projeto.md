@@ -111,7 +111,8 @@ publicada.
 
 **Decisão:** fotos do **Pexels** (licença livre, sem exigência de crédito), sem nenhuma pessoa
 identificável representando a Dra. Helena. O retrato do "Sobre" mostra o consultório (poltrona,
-janela e plantas), e a única foto com pessoa é um detalhe de mão anotando num caderno, sem rosto. O
+janela e plantas). A faixa de imagens abaixo dele usa detalhes sem pessoas (folhas de oliveira, chá
+e livros, parede de cal), escolhidos pelos tons oliva, sálvia e creme da paleta. O
 hero usa uma sala com parede de plantas, que conversa com a paleta sálvia, e a fachada é um prédio
 de São Paulo. Os créditos ficam no README.
 
