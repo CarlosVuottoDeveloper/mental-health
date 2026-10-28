@@ -126,7 +126,7 @@ docs/                   # descoberta, planejamento, qualidade e estudo de caso
 
 ## Qualidade
 
-- **Testes:** 139 testes (componentes, conteúdo, formulário, API, tokens, contraste, analytics).
+- **Testes:** 143 testes (componentes, conteúdo, formulário, API, tokens, contraste, analytics).
 - **Lighthouse (mobile):** ≥ 90 nas quatro categorias. Detalhes em
   [`docs/quality/lighthouse.md`](docs/quality/lighthouse.md).
 - **Acessibilidade:** 0 violações WCAG 2.2 AA no axe. Detalhes em
@@ -173,9 +173,10 @@ O deploy é feito na Vercel (task LPC-7), com preview por pull request. Passos:
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | [`docs/case/estudo-de-caso.md`](docs/case/estudo-de-caso.md)                                             | Case de portfólio                        |
 | [`docs/planning/plano-de-implementacao.md`](docs/planning/plano-de-implementacao.md)                     | As 28 tasks do Jira em ordem, com status |
-| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D15 e justificativas         |
+| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D16 e justificativas         |
 | [`docs/discovery/LPC-2-destino-secao-depoimentos.md`](docs/discovery/LPC-2-destino-secao-depoimentos.md) | Por que não há depoimentos               |
 | [`docs/quality/`](docs/quality)                                                                          | Revisão CFM, Lighthouse e QA             |
+| [`docs/design/`](docs/design)                                                                            | Prompt e imagens do wireframe (LPC-3)    |
 
 ## Créditos
 

@@ -6,10 +6,15 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-10-28
+
+Fotos e layout a partir do wireframe da LPC-3.
+
 ### Adicionado
 
 - Fotos do Pexels no hero, na seção "Sobre" e na localização, sem pessoas identificáveis no papel
   da médica (D12).
+- Wireframe da LPC-3 em `docs/design/` (prompt do Claude Design e imagens) e decisão D16.
 
 ### Alterado
 
@@ -75,6 +80,7 @@ LPC que não dependem da publicação.
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
-[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...HEAD
+[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.2.0
 [0.1.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.1.0
