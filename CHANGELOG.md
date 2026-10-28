@@ -6,6 +6,12 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+### Adicionado
+
+- Site publicado na Vercel em https://dra-helena-vasconcelos.vercel.app (LPC-7), com previews por branch e PR, e decisão
+  D17 sobre o domínio (LPC-25).
+- Rodada de QA e Lighthouse na URL publicada (LPC-27, LPC-28).
+
 ## [0.3.0] - 2026-10-28
 
 Fotos e layout a partir do wireframe da LPC-3.

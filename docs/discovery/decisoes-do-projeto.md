@@ -186,3 +186,20 @@ visual (D1):
   psiquiátrico tende a ser reducionista ou estigmatizante; os cards ficam só com texto.
 - **Faixa pixelada** do bloco de agendamento mantida: é o único gesto gráfico da marca (D1) e não
   aparece num wireframe em escala de cinza.
+
+## D17 — Domínio no subdomínio da Vercel
+
+**Decisão:** o site fica em `dra-helena-vasconcelos.vercel.app`, o subdomínio que a Vercel atribui ao
+projeto, com HTTPS automático. Não há domínio próprio, então não há DNS nem redirect www/apex a
+configurar (LPC-25).
+
+**Por quê:**
+
+- A cliente é fictícia e o site sai com `noindex` (D7). Um domínio próprio, como
+  `helenavasconcelos.com.br`, sugeriria um consultório real.
+- É o mesmo padrão dos outros projetos de portfólio na conta, sem custo.
+- Trocar depois é simples: adicionar o domínio em **Settings → Domains**, atualizar
+  `NEXT_PUBLIC_SITE_URL` e publicar de novo.
+
+O primeiro deploy de produção foi disparado a partir da `main` no GitHub (commit da `v0.3.0`), e não
+dos arquivos locais, para manter o vínculo entre a publicação e o commit.
