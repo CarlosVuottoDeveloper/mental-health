@@ -3,7 +3,8 @@
 > Projeto conceitual de portfólio, com cliente fictícia (Dra. Helena Vasconcelos). Todos os dados
 > profissionais, o endereço e os contatos são inventados.
 >
-> **Status:** rascunho. Os números da URL publicada entram depois do deploy (LPC-7 e LPC-28).
+> **Site:** [dra-helena-vasconcelos.vercel.app](https://dra-helena-vasconcelos.vercel.app) (sem indexação em buscadores, por ser fictício).
+> Falta só o QA manual em iPhone, Android e leitores de tela (LPC-27).
 
 ## O problema
 
@@ -75,16 +76,17 @@ médica (D12).
 - **Processo:** Gitflow, uma branch por task do Jira, hooks de lint e testes, 143 testes
   automatizados, incluindo uma checagem do texto contra as regras da CFM.
 
-## Resultados (medição local, pré-deploy)
+## Resultados (URL publicada)
 
-| Métrica                                  | Resultado                                                                             |
-| ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| Lighthouse mobile                        | Performance 92, Acessibilidade 100, Boas práticas 100, SEO 100 (com indexação ligada) |
-| Performance com estrangulamento aplicado | 99 (LCP 1,5 s)                                                                        |
-| Acessibilidade (axe, WCAG 2.2 AA)        | 0 violações                                                                           |
-| Testes automatizados                     | 143                                                                                   |
+| Métrica                           | Resultado                                                                             |
+| --------------------------------- | ------------------------------------------------------------------------------------- |
+| Lighthouse mobile                 | Performance 98, Acessibilidade 100, Boas práticas 100, SEO 100 (com indexação ligada) |
+| Lighthouse desktop                | Performance 100, Acessibilidade 100, Boas práticas 100                                |
+| LCP mobile                        | 2,1–2,3 s (simulado em 4G lento)                                                      |
+| Acessibilidade (axe, WCAG 2.2 AA) | 0 violações                                                                           |
+| Testes automatizados              | 143                                                                                   |
 
-_A completar após o deploy: Lighthouse na URL publicada e QA em dispositivos reais._
+_A completar: QA em iPhone e Android reais e com leitores de tela._
 
 ## O que eu faria diferente num projeto real
 

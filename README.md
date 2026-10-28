@@ -6,6 +6,8 @@ Landing page de consultório psiquiátrico construída com Next.js, React e Type
 > CRM e RQE são zerados de propósito, o endereço é fictício e o e-mail usa o domínio reservado
 > `.example`. O site sai com `noindex` para não aparecer em buscas.
 
+**Site publicado:** [dra-helena-vasconcelos.vercel.app](https://dra-helena-vasconcelos.vercel.app)
+
 O escopo e as decisões vêm do quadro **Landing Page Consultório (LPC)** no Jira. O caminho completo
 está em [`docs/`](#documentação), incluindo o [estudo de caso](docs/case/estudo-de-caso.md).
 
@@ -127,7 +129,8 @@ docs/                   # descoberta, planejamento, qualidade e estudo de caso
 ## Qualidade
 
 - **Testes:** 143 testes (componentes, conteúdo, formulário, API, tokens, contraste, analytics).
-- **Lighthouse (mobile):** ≥ 90 nas quatro categorias. Detalhes em
+- **Lighthouse na URL publicada:** mobile 98 / 100 / 100 e desktop 100 / 100 / 100 (desempenho,
+  acessibilidade, boas práticas; SEO 100 com a indexação ligada). Detalhes em
   [`docs/quality/lighthouse.md`](docs/quality/lighthouse.md).
 - **Acessibilidade:** 0 violações WCAG 2.2 AA no axe. Detalhes em
   [`docs/quality/qa.md`](docs/quality/qa.md).
@@ -150,22 +153,34 @@ Fluxo **Gitflow**:
 
 ## Deploy
 
-O deploy é feito na Vercel (task LPC-7), com preview por pull request. Passos:
+Projeto **`dra-helena-vasconcelos`** na Vercel (LPC-7), ligado a este repositório no GitHub:
 
-1. Importar o repositório na Vercel (framework detectado: Next.js).
-2. Cadastrar as variáveis de ambiente da tabela acima.
-3. Para a versão de portfólio, manter `NEXT_PUBLIC_SITE_INDEXABLE` vazio; se não houver conta no
-   Resend, usar `CONTACT_SIMULATE=true`.
-4. Apontar o domínio (LPC-25): de preferência um subdomínio de portfólio.
+- **Produção:** cada push na `main` (ou seja, cada release) publica em [dra-helena-vasconcelos.vercel.app](https://dra-helena-vasconcelos.vercel.app).
+- **Previews:** cada push e pull request nas outras branches gera uma URL de preview, protegida
+  pelo login da Vercel. Previews e produção saem com `noindex` (D7).
+- **Domínio:** o subdomínio `.vercel.app`, com HTTPS automático (decisão D17). Para usar um
+  domínio próprio, adicione-o em **Settings → Domains**, troque `NEXT_PUBLIC_SITE_URL` e publique
+  de novo.
+
+Variáveis cadastradas (produção e preview):
+
+| Variável               | Valor                                         |
+| ---------------------- | --------------------------------------------- |
+| `CONTACT_SIMULATE`     | `true` (formulário em modo demonstração, D14) |
+| `NEXT_PUBLIC_SITE_URL` | `https://dra-helena-vasconcelos.vercel.app`   |
+
+As demais ficam sem valor de propósito: `NEXT_PUBLIC_SITE_INDEXABLE` (portfólio sem indexação),
+`NEXT_PUBLIC_WHATSAPP_NUMBER` (número fictício padrão) e `NEXT_PUBLIC_GA_MEASUREMENT_ID` (sem GA4).
+Web Analytics e Speed Insights estão ativos no projeto.
 
 ## Serviços e acessos
 
-| Serviço | Para quê                                  | Onde configurar                      |
-| ------- | ----------------------------------------- | ------------------------------------ |
-| Vercel  | Hospedagem, previews, Analytics           | Painel da Vercel                     |
-| Resend  | Envio do formulário de contato            | resend.com → API Keys e domínio      |
-| GA4     | Métricas de conversão (com consentimento) | analytics.google.com → ID de medição |
-| Domínio | Endereço público                          | Registrador + DNS apontando à Vercel |
+| Serviço | Para quê                                  | Onde configurar                       |
+| ------- | ----------------------------------------- | ------------------------------------- |
+| Vercel  | Hospedagem, previews, Analytics           | Projeto `dra-helena-vasconcelos`      |
+| Resend  | Envio do formulário de contato            | resend.com → API Keys e domínio       |
+| GA4     | Métricas de conversão (com consentimento) | analytics.google.com → ID de medição  |
+| Domínio | Endereço público                          | `.vercel.app` (D17); próprio: Domains |
 
 ## Documentação
 
@@ -173,7 +188,7 @@ O deploy é feito na Vercel (task LPC-7), com preview por pull request. Passos:
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | [`docs/case/estudo-de-caso.md`](docs/case/estudo-de-caso.md)                                             | Case de portfólio                        |
 | [`docs/planning/plano-de-implementacao.md`](docs/planning/plano-de-implementacao.md)                     | As 28 tasks do Jira em ordem, com status |
-| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D16 e justificativas         |
+| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D17 e justificativas         |
 | [`docs/discovery/LPC-2-destino-secao-depoimentos.md`](docs/discovery/LPC-2-destino-secao-depoimentos.md) | Por que não há depoimentos               |
 | [`docs/quality/`](docs/quality)                                                                          | Revisão CFM, Lighthouse e QA             |
 | [`docs/design/`](docs/design)                                                                            | Prompt e imagens do wireframe (LPC-3)    |
