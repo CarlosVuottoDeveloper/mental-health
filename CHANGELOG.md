@@ -14,6 +14,15 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 ### Alterado
 
 - Degradê do hero mais escuro, para manter o menu e os textos acima de 4,5:1 sobre a foto.
+- Layout ajustado ao wireframe da LPC-3 (D16): hero em uma coluna, "Sobre" com retrato à esquerda,
+  rótulos de seção só no "Sobre", atendimento em quatro colunas, FAQ em duas colunas, "Como
+  funciona" em seção clara e cards de localização com o mesmo peso.
+- Menu do celular em tela cheia; CTA do header sempre preenchido.
+- Banner de cookies com "Recusar" e "Aceitar" no mesmo estilo.
+- Formulário: preferência e período lado a lado, erros com ícone, sucesso com foco no título e
+  link para o WhatsApp.
+- Aviso de emergência do rodapé em caixa com borda; links de texto, botão de menu e links do
+  rodapé com área de toque de 44 px no celular.
 
 ## [0.2.0] - 2026-10-26
 
