@@ -6,6 +6,20 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+## [0.3.3] - 2026-10-28
+
+### Adicionado
+
+- CI no GitHub Actions (`verify`): instalação limpa, typecheck, lint, formatação, testes e build
+  no Node 24, em todo pull request e push na `main` e na `develop` (LPC-5).
+- Regra de proteção da `main`: só por pull request com merge commit, com `verify` e o preview da
+  Vercel verdes, sem force push nem exclusão (LPC-5).
+
+### Corrigido
+
+- `npm run typecheck` falhava num clone limpo, porque os tipos de rota do Next (`LayoutProps`) só
+  existiam depois de um `dev` ou `build`. Agora o script roda `next typegen` antes do `tsc`.
+
 ## [0.3.2] - 2026-10-28
 
 ### Alterado
@@ -97,7 +111,8 @@ LPC que não dependem da publicação.
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
-[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.2...HEAD
+[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.3...HEAD
+[0.3.3]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...v0.3.0

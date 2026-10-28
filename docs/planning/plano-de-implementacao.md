@@ -43,36 +43,37 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 
 ## Ordem de execução
 
-| Ordem | Task   | Título                                                       | Fase                  | Depende de             | Repo |
-| ----- | ------ | ------------------------------------------------------------ | --------------------- | ---------------------- | ---- |
-| 1     | LPC-1  | Briefing e coleta de conteúdo com a cliente                  | 0 · Descoberta        | —                      | ✅   |
-| 2     | LPC-2  | Definir com a cliente o destino da seção de depoimentos      | 0 · Descoberta        | LPC-1                  | ✅   |
-| 3     | LPC-3  | Referências e wireframe mobile-first                         | 1 · Design            | LPC-1, LPC-2           | 🟡   |
-| 4     | LPC-4  | Design system e layouts mobile, tablet e desktop no Figma    | 1 · Design            | LPC-3                  | ✅   |
-| 5     | LPC-5  | Criar repositório com Next.js 15 + TypeScript                | 2 · Fundação          | —                      | 🟡   |
-| 6     | LPC-6  | Tailwind com tokens, ESLint, Prettier e Husky                | 2 · Fundação          | LPC-4, LPC-5           | ✅   |
-| 7     | LPC-8  | Header, navegação e CTA fixo                                 | 3 · Seções            | LPC-6                  | ✅   |
-| 8     | LPC-9  | Hero com proposta de valor e CTA principal                   | 3 · Seções            | LPC-8                  | ✅   |
-| 9     | LPC-10 | Seção Sobre a profissional com identificação CRM/RQE         | 3 · Seções            | LPC-6                  | ✅   |
-| 10    | LPC-11 | Seção de especialidades                                      | 3 · Seções            | LPC-6                  | ✅   |
-| 11    | LPC-12 | Seção de benefícios do atendimento                           | 3 · Seções            | LPC-6                  | ✅   |
-| 12    | LPC-14 | Seção Como funciona o acompanhamento                         | 3 · Seções            | LPC-2                  | ✅   |
-| 13    | LPC-13 | FAQ com acordeão acessível                                   | 3 · Seções            | LPC-6                  | ✅   |
-| 14    | LPC-15 | Seção de localização com mapa e footer                       | 3 · Seções            | LPC-6                  | ✅   |
-| 15    | LPC-18 | Botão flutuante de WhatsApp com mensagem pré-preenchida      | 4 · Conversão e LGPD  | LPC-6                  | ✅   |
-| 16    | LPC-24 | Política de privacidade, aviso LGPD e banner de cookies      | 4 · Conversão e LGPD  | LPC-6                  | ✅   |
-| 17    | LPC-16 | Formulário de contato com React Hook Form + Zod              | 4 · Conversão e LGPD  | LPC-24                 | ✅   |
-| 18    | LPC-17 | Route Handler de envio com Resend e honeypot anti-spam       | 4 · Conversão e LGPD  | LPC-16                 | ✅   |
-| 19    | LPC-19 | Bloco de agendamento via WhatsApp (sem integração de agenda) | 4 · Conversão e LGPD  | LPC-18, LPC-16         | ✅   |
-| 20    | LPC-20 | Metadata API, Open Graph e favicon                           | 5 · SEO e performance | LPC-9                  | ✅   |
-| 21    | LPC-21 | JSON-LD Physician/MedicalBusiness, sitemap.ts e robots.ts    | 5 · SEO e performance | LPC-13, LPC-15         | ✅   |
-| 22    | LPC-23 | Revisar conteúdo contra a Resolução CFM 2.336/2023           | 6 · Qualidade         | Fases 3 e 4            | ✅   |
-| 23    | LPC-26 | GA4 e Vercel Analytics com eventos de conversão              | 6 · Qualidade         | LPC-24, LPC-18, LPC-16 | ✅   |
-| 24    | LPC-22 | Otimizar imagens e fontes até Lighthouse ≥ 90                | 6 · Qualidade         | LPC-23, LPC-26         | ✅   |
-| 25    | LPC-7  | Vercel com preview por PR e variáveis de ambiente            | 7 · Publicação        | Fases 3 a 6            | ✅   |
-| 26    | LPC-25 | Configurar domínio e DNS                                     | 7 · Publicação        | LPC-7                  | ✅   |
-| 27    | LPC-27 | QA cross-browser e revisão de acessibilidade                 | 7 · Publicação        | LPC-25                 | 🟡   |
-| 28    | LPC-28 | Handoff: README, acessos e case de portfólio                 | 7 · Publicação        | LPC-27                 | ✅   |
+| Ordem | Task                                                      | Título                                                                             | Fase                  | Depende de             | Repo |
+| ----- | --------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------- | ---------------------- | ---- |
+| 1     | LPC-1                                                     | Briefing e coleta de conteúdo com a cliente                                        | 0 · Descoberta        | —                      | ✅   |
+| 2     | LPC-2                                                     | Definir com a cliente o destino da seção de depoimentos                            | 0 · Descoberta        | LPC-1                  | ✅   |
+| 3     | LPC-3                                                     | Referências e wireframe mobile-first                                               | 1 · Design            | LPC-1, LPC-2           | 🟡   |
+| 4     | LPC-5                                                     | Next.js 16 + TypeScript strict; CI no GitHub Actions e regra de proteção da `main` |
+| LPC-4 | Design system e layouts mobile, tablet e desktop no Figma | 1 · Design                                                                         | LPC-3                 | ✅                     |
+| 5     | LPC-5                                                     | Criar repositório com Next.js 15 + TypeScript                                      | 2 · Fundação          | —                      | ✅   |
+| 6     | LPC-6                                                     | Tailwind com tokens, ESLint, Prettier e Husky                                      | 2 · Fundação          | LPC-4, LPC-5           | ✅   |
+| 7     | LPC-8                                                     | Header, navegação e CTA fixo                                                       | 3 · Seções            | LPC-6                  | ✅   |
+| 8     | LPC-9                                                     | Hero com proposta de valor e CTA principal                                         | 3 · Seções            | LPC-8                  | ✅   |
+| 9     | LPC-10                                                    | Seção Sobre a profissional com identificação CRM/RQE                               | 3 · Seções            | LPC-6                  | ✅   |
+| 10    | LPC-11                                                    | Seção de especialidades                                                            | 3 · Seções            | LPC-6                  | ✅   |
+| 11    | LPC-12                                                    | Seção de benefícios do atendimento                                                 | 3 · Seções            | LPC-6                  | ✅   |
+| 12    | LPC-14                                                    | Seção Como funciona o acompanhamento                                               | 3 · Seções            | LPC-2                  | ✅   |
+| 13    | LPC-13                                                    | FAQ com acordeão acessível                                                         | 3 · Seções            | LPC-6                  | ✅   |
+| 14    | LPC-15                                                    | Seção de localização com mapa e footer                                             | 3 · Seções            | LPC-6                  | ✅   |
+| 15    | LPC-18                                                    | Botão flutuante de WhatsApp com mensagem pré-preenchida                            | 4 · Conversão e LGPD  | LPC-6                  | ✅   |
+| 16    | LPC-24                                                    | Política de privacidade, aviso LGPD e banner de cookies                            | 4 · Conversão e LGPD  | LPC-6                  | ✅   |
+| 17    | LPC-16                                                    | Formulário de contato com React Hook Form + Zod                                    | 4 · Conversão e LGPD  | LPC-24                 | ✅   |
+| 18    | LPC-17                                                    | Route Handler de envio com Resend e honeypot anti-spam                             | 4 · Conversão e LGPD  | LPC-16                 | ✅   |
+| 19    | LPC-19                                                    | Bloco de agendamento via WhatsApp (sem integração de agenda)                       | 4 · Conversão e LGPD  | LPC-18, LPC-16         | ✅   |
+| 20    | LPC-20                                                    | Metadata API, Open Graph e favicon                                                 | 5 · SEO e performance | LPC-9                  | ✅   |
+| 21    | LPC-21                                                    | JSON-LD Physician/MedicalBusiness, sitemap.ts e robots.ts                          | 5 · SEO e performance | LPC-13, LPC-15         | ✅   |
+| 22    | LPC-23                                                    | Revisar conteúdo contra a Resolução CFM 2.336/2023                                 | 6 · Qualidade         | Fases 3 e 4            | ✅   |
+| 23    | LPC-26                                                    | GA4 e Vercel Analytics com eventos de conversão                                    | 6 · Qualidade         | LPC-24, LPC-18, LPC-16 | ✅   |
+| 24    | LPC-22                                                    | Otimizar imagens e fontes até Lighthouse ≥ 90                                      | 6 · Qualidade         | LPC-23, LPC-26         | ✅   |
+| 25    | LPC-7                                                     | Vercel com preview por PR e variáveis de ambiente                                  | 7 · Publicação        | Fases 3 a 6            | ✅   |
+| 26    | LPC-25                                                    | Configurar domínio e DNS                                                           | 7 · Publicação        | LPC-7                  | ✅   |
+| 27    | LPC-27                                                    | QA cross-browser e revisão de acessibilidade                                       | 7 · Publicação        | LPC-25                 | 🟡   |
+| 28    | LPC-28                                                    | Handoff: README, acessos e case de portfólio                                       | 7 · Publicação        | LPC-27                 | ✅   |
 
 **Por que esta ordem**
 
@@ -105,9 +106,6 @@ anotações e estados) foi gerado no Claude Design a partir de
 `docs/design/prompt-wireframe-claude-design.md` (imagens em `docs/design/wireframe/`), e o layout
 do site foi ajustado a ele (D16). Falta o
 levantamento de 5 a 8 referências.
-
-**LPC-5 — Repositório** 🟡 · Falta só a proteção da branch `main` no GitHub (configuração do
-repositório).
 
 ### Concluídas no código
 
