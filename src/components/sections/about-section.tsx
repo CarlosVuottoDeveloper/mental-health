@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import {
   Button,
   Container,
-  Heading,
+  headingVariants,
   LogoMark,
   MediaShape,
   SectionLabel,
@@ -47,21 +47,23 @@ export function AboutSection({
   return (
     <section id={id} className="scroll-mt-20 py-section">
       <Container className="flex flex-col gap-12 md:gap-16">
-        <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-10">
-          <SectionLabel>{label}</SectionLabel>
-          <Heading size="lg">{statement}</Heading>
-        </div>
+        {/* Mobile reads label → statement → portrait → bio; from md the portrait
+            takes the left column and the text stacks on the right. */}
+        <div className="grid gap-x-12 gap-y-10 md:grid-cols-[2fr_3fr] lg:gap-x-16">
+          <div className="flex flex-col gap-6 md:col-start-2">
+            <SectionLabel as="h2">{label}</SectionLabel>
+            <p className={headingVariants({ size: "lg" })}>{statement}</p>
+          </div>
 
-        <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-[1fr_2fr]">
           <MediaShape
             shape="rounded"
             // max-w-sm caps it at 24rem below md.
-            sizes="(min-width: 768px) 33vw, min(100vw, 24rem)"
-            className="w-full max-md:max-w-sm"
+            sizes="(min-width: 768px) 40vw, min(100vw, 24rem)"
+            className="w-full self-start max-md:max-w-sm md:sticky md:top-28 md:col-start-1 md:row-span-2 md:row-start-1"
             {...portrait}
           />
 
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 md:col-start-2">
             <div className="flex max-w-[65ch] flex-col gap-4">
               {paragraphs.map((paragraph) => (
                 <Text key={paragraph} size="lg">
@@ -83,11 +85,11 @@ export function AboutSection({
               ))}
             </dl>
 
-            <div className="flex flex-wrap items-center justify-between gap-6">
-              <SocialLinks links={socials} highlight={socials[0]?.network} />
+            <div className="flex flex-wrap items-center gap-6 max-md:flex-col-reverse max-md:items-start">
               <Button withArrow asChild>
                 <a href={cta.href}>{cta.label}</a>
               </Button>
+              <SocialLinks links={socials} highlight={socials[0]?.network} />
             </div>
           </div>
         </div>

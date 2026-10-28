@@ -16,6 +16,13 @@ describe("CookieBanner", () => {
     ).toHaveAttribute("href", "/politica-de-privacidade");
   });
 
+  it("gives refusing and accepting the same style", () => {
+    render(<CookieBanner policyHref="/politica-de-privacidade" />);
+    expect(screen.getByRole("button", { name: "Recusar" }).className).toBe(
+      screen.getByRole("button", { name: "Aceitar" }).className,
+    );
+  });
+
   it.each([
     ["Recusar", "rejected"],
     ["Aceitar", "accepted"],

@@ -32,20 +32,12 @@ export function CookieBanner({ policyHref }: CookieBannerProps) {
           Política de privacidade
         </Link>
       </Text>
-      <div className="flex flex-wrap gap-3">
-        <Button
-          size="sm"
-          variant="secondary"
-          onClick={() => writeConsent("rejected")}
-        >
+      {/* Refusing is as easy as accepting: same size, same style (LGPD). */}
+      <div className="grid grid-cols-2 gap-3">
+        <Button variant="secondary" onClick={() => writeConsent("rejected")}>
           Recusar
         </Button>
-        <Button
-          size="sm"
-          variant="accent"
-          className="focus-visible:outline-ring-inverse"
-          onClick={() => writeConsent("accepted")}
-        >
+        <Button variant="secondary" onClick={() => writeConsent("accepted")}>
           Aceitar
         </Button>
       </div>
@@ -58,7 +50,7 @@ export function CookiePreferencesButton() {
   return (
     <button
       type="button"
-      className="cursor-pointer rounded-xs hover:text-foreground"
+      className="inline-flex min-h-11 cursor-pointer items-center rounded-xs hover:text-foreground md:min-h-0"
       onClick={() => writeConsent(null)}
     >
       Preferências de cookies

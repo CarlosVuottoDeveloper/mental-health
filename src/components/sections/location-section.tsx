@@ -4,14 +4,12 @@ import {
   Container,
   Heading,
   MediaShape,
-  SectionLabel,
   Text,
   type MediaShapeProps,
 } from "@/components/ui";
 
 export type LocationSectionProps = {
   id?: string;
-  label: string;
   title: string;
   description: string;
   inPerson: {
@@ -32,7 +30,6 @@ export type LocationSectionProps = {
  */
 export function LocationSection({
   id,
-  label,
   title,
   description,
   inPerson,
@@ -41,20 +38,18 @@ export function LocationSection({
   facade,
 }: LocationSectionProps) {
   return (
-    <section id={id} className="scroll-mt-20 py-section">
+    <section id={id} className="scroll-mt-20 bg-surface-sunken py-section">
       <Container className="flex flex-col gap-12">
-        <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-10">
-          <SectionLabel>{label}</SectionLabel>
-          <div className="flex flex-col gap-4">
-            <Heading size="lg">{title}</Heading>
-            <Text size="lg" tone="muted" className="max-w-[55ch]">
-              {description}
-            </Text>
-          </div>
+        <div className="flex max-w-2xl flex-col gap-4">
+          <Heading size="lg">{title}</Heading>
+          <Text size="lg" tone="muted">
+            {description}
+          </Text>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <article className="flex flex-col gap-6 rounded-xl bg-surface-sunken p-6 md:p-8">
+          {/* Same weight for both formats: the care and the time are the same. */}
+          <article className="flex flex-col gap-6 rounded-xl bg-background p-6 md:p-8">
             <MapPin aria-hidden className="size-6" strokeWidth={1.5} />
             <div className="flex flex-col gap-3">
               <h3 className="font-display text-display-md">{inPerson.title}</h3>
@@ -83,10 +78,10 @@ export function LocationSection({
             </Button>
           </article>
 
-          <article className="flex flex-col gap-6 rounded-xl bg-inverse p-6 text-inverse-foreground md:p-8">
+          <article className="flex flex-col gap-6 rounded-xl bg-background p-6 md:p-8">
             <Video aria-hidden className="size-6" strokeWidth={1.5} />
             <h3 className="font-display text-display-md">{online.title}</h3>
-            <ul className="flex flex-col gap-2 text-body-sm text-inverse-muted">
+            <ul className="flex flex-col gap-2 text-body-sm text-foreground-muted">
               {online.details.map((detail) => (
                 <li key={detail}>{detail}</li>
               ))}
@@ -101,7 +96,7 @@ export function LocationSection({
               title={map.title}
               loading="lazy"
               referrerPolicy="no-referrer"
-              className="aspect-[16/10] w-full rounded-lg border border-border bg-surface-sunken"
+              className="aspect-[16/10] w-full rounded-lg border border-border bg-background"
             />
             <figcaption className="text-caption text-foreground-muted">
               {map.caption}

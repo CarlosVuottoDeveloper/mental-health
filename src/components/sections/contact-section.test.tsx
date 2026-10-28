@@ -69,6 +69,27 @@ describe("ContactSection", () => {
     expect(body.website).toBeUndefined();
   });
 
+  it("moves focus to the confirmation and offers WhatsApp", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(new Response("{}", { status: 200 })),
+    );
+    const user = userEvent.setup();
+    render(<ContactSection {...props} />);
+
+    await fillValidForm(user);
+    await user.click(screen.getByRole("button", { name: "Solicitar retorno" }));
+
+    expect(
+      await screen.findByRole("heading", { name: "Retorno solicitado" }),
+    ).toHaveFocus();
+    expect(
+      screen.getByRole("link", {
+        name: "Prefere falar agora? Chamar no WhatsApp",
+      }),
+    ).toHaveAttribute("href", props.whatsappHref);
+  });
+
   it("offers WhatsApp when sending fails", async () => {
     vi.stubGlobal(
       "fetch",

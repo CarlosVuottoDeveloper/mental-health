@@ -27,7 +27,8 @@ export const buttonVariants = cva(
         lg: "h-13 px-7 text-label",
       },
     },
-    compoundVariants: [{ variant: "link", className: "h-auto px-0" }],
+    // Text links keep their visual size but get a 44 px tall hit area.
+    compoundVariants: [{ variant: "link", className: "h-auto min-h-11 px-0" }],
     defaultVariants: {
       variant: "primary",
       size: "md",

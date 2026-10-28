@@ -79,6 +79,30 @@ function useMenuKeyboard(
   }, [open, close, container]);
 }
 
+/**
+ * While the full-screen menu is open the page behind it must not scroll, and
+ * the menu closes if the viewport grows to the desktop layout (where it is hidden).
+ */
+function useMenuOverlay(open: boolean, close: () => void) {
+  useEffect(() => {
+    if (!open) return;
+
+    const root = document.documentElement;
+    const previous = root.style.overflow;
+    root.style.overflow = "hidden";
+
+    // Absent in some test environments.
+    const desktop = window.matchMedia?.("(min-width: 80rem)");
+    const onChange = (event: MediaQueryListEvent) => event.matches && close();
+    desktop?.addEventListener("change", onChange);
+
+    return () => {
+      root.style.overflow = previous;
+      desktop?.removeEventListener("change", onChange);
+    };
+  }, [open, close]);
+}
+
 export function SiteHeader({
   links,
   contact,
@@ -87,7 +111,7 @@ export function SiteHeader({
   className,
 }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
-  const overlay = useOverlay(overlayTargetId);
+  const overHero = useOverlay(overlayTargetId);
   const headerRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -96,6 +120,9 @@ export function SiteHeader({
     toggleRef.current?.focus();
   };
   useMenuKeyboard(open, closeMenu, headerRef);
+  useMenuOverlay(open, closeMenu);
+  // The open menu covers the hero, so the header switches to its solid style.
+  const overlay = overHero && !open;
 
   return (
     <header
@@ -103,14 +130,17 @@ export function SiteHeader({
       className={cn(
         "z-40 transition-colors duration-(--duration-base) ease-soft",
         fixed && "fixed inset-x-0 top-0",
-        overlay
-          ? "text-inverse-foreground"
-          : "border-b border-border bg-background/95 text-foreground backdrop-blur-md",
+        overlay && "text-inverse-foreground",
+        !overlay && "border-b border-border text-foreground",
+        // backdrop-filter would become the containing block of the fixed
+        // full-screen menu and clip it to the header, so it is off while open.
+        !overlay &&
+          (open ? "bg-background" : "bg-background/95 backdrop-blur-md"),
         className,
       )}
     >
       <Container className="flex h-20 items-center justify-between gap-6">
-        <Link href="/" className="rounded-xs">
+        <Link href="/" className="inline-flex min-h-11 items-center rounded-xs">
           <Logo tone={overlay ? "inverse" : "default"} />
         </Link>
 
@@ -129,9 +159,9 @@ export function SiteHeader({
           </ul>
         </nav>
 
-        {/* Over the hero the hero's own accent button is the visible CTA. */}
+        {/* Filled in both states; lime only once the hero (and its own lime CTA) is gone. */}
         <Button
-          variant={overlay ? "link" : "accent"}
+          variant={overlay ? "soft" : "accent"}
           size="sm"
           asChild
           className={cn(
@@ -151,6 +181,7 @@ export function SiteHeader({
           aria-expanded={open}
           aria-controls="site-menu"
           variant={overlay ? "inverse-outline" : "soft"}
+          size="lg"
           className="xl:hidden"
           onClick={() => setOpen((value) => !value)}
         >
@@ -159,41 +190,41 @@ export function SiteHeader({
       </Container>
 
       {open && (
-        <nav id="site-menu" aria-label="Principal" className="pb-4 xl:hidden">
-          <Container>
-            <ul
-              className={cn(
-                "flex flex-col gap-1 rounded-lg p-2 text-label uppercase",
-                overlay
-                  ? "bg-inverse/85 backdrop-blur-md"
-                  : "bg-surface-sunken",
-              )}
-            >
+        <nav
+          id="site-menu"
+          aria-label="Principal"
+          className="fixed inset-x-0 top-20 bottom-0 overflow-y-auto bg-background xl:hidden"
+        >
+          <Container className="flex min-h-full flex-col gap-10 pt-4 pb-8">
+            <ul className="flex flex-col">
               {links.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="border-b border-border">
                   <a
                     href={link.href}
                     data-menu-item
-                    className="block rounded-sm px-3 py-3"
+                    className="block rounded-xs py-4 font-display text-display-sm"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
-              <li className="p-1">
-                <Button variant="accent" asChild className="w-full">
-                  <a
-                    href={contact.href}
-                    data-menu-item
-                    data-cta="header"
-                    onClick={() => setOpen(false)}
-                  >
-                    {contact.label}
-                  </a>
-                </Button>
-              </li>
             </ul>
+            <Button
+              variant="accent"
+              size="lg"
+              asChild
+              className="mt-auto w-full"
+            >
+              <a
+                href={contact.href}
+                data-menu-item
+                data-cta="header"
+                onClick={() => setOpen(false)}
+              >
+                {contact.label}
+              </a>
+            </Button>
           </Container>
         </nav>
       )}
