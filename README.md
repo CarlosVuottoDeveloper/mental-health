@@ -149,7 +149,32 @@ Fluxo **Gitflow**:
 - `develop`: branch de integração.
 - `feature/lpc-<n>-<slug>`: uma por task do Jira, criada a partir de `develop` e mesclada de volta
   com `--no-ff`.
-- `release/<versão>` e `hotfix/<nome>`: mesclados em `main` (com tag) e em `develop`.
+- `release/<versão>` e `hotfix/<nome>`: entram na `main` por pull request (com tag depois do merge)
+  e voltam para a `develop` com merge direto.
+
+### CI e proteção da `main`
+
+O workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) roda em todo pull request e em
+todo push na `main` e na `develop`: `npm ci`, typecheck, lint, formatação, testes e build, no
+Node 24 (o mesmo da Vercel). Ao contrário do hook de pre-push, não dá para pular.
+
+A `main` tem uma regra (Settings → Rules → Rulesets, "Proteção da main") que:
+
+- só aceita mudanças por pull request, mesclado com merge commit (sem squash nem rebase);
+- exige as checagens `verify` (CI) e `Vercel` (deploy de preview) verdes;
+- bloqueia force push e exclusão da branch.
+
+A regra não exige aprovação de outra pessoa, porque o projeto tem um só mantenedor. Fechando uma
+release:
+
+```bash
+git checkout -b release/x.y.z develop      # versão no package.json e no CHANGELOG
+git push -u origin release/x.y.z
+gh pr create --base main --head release/x.y.z --title "Release x.y.z"
+gh pr merge --merge --delete-branch        # depois de `verify` e `Vercel` verdes
+git checkout main && git pull && git tag -a vx.y.z -m "..." && git push origin vx.y.z
+git checkout develop && git merge --no-ff main && git push
+```
 
 ## Deploy
 
