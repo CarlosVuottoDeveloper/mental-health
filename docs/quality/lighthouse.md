@@ -61,6 +61,22 @@ execuções simuladas e uma com estrangulamento aplicado:
   4:5 de uma foto 3:4.
 - O `next/image` entrega as fotos em WebP/AVIF; o total transferido na primeira visita é 527 KiB.
 
+## URL publicada (2026-10-28)
+
+Medido em https://dra-helena-vasconcelos.vercel.app, release `v0.3.0`, Lighthouse 12, três execuções mobile e uma desktop:
+
+| Perfil                | Performance | Acessibilidade | Boas práticas | SEO  | FCP   | LCP       | CLS |
+| --------------------- | ----------- | -------------- | ------------- | ---- | ----- | --------- | --- |
+| Mobile (3×, simulado) | **98**      | **100**        | **100**       | 69 † | 1,7 s | 2,1–2,3 s | 0   |
+| Desktop               | **100**     | **100**        | **100**       | 69 † | 0,4 s | 0,8 s     | 0   |
+
+† Só `is-crawlable`, pelo `noindex` (D7).
+
+Os números da URL publicada são melhores que os locais porque a Vercel serve a página pela CDN, já
+comprimida e com cache, em vez do `next start` sem compressão. As medições foram feitas bloqueando um
+script que o antivírus da máquina de teste injeta nas páginas (detalhes em `qa.md`); sem o bloqueio,
+o mesmo site marcou entre 76 e 91.
+
 ## Oportunidades restantes
 
 - **JavaScript não usado (~70 KB):** principalmente o formulário (React Hook Form + Zod) e o Radix,

@@ -39,6 +39,7 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | D14 | Formulário no portfólio      | `CONTACT_SIMULATE=true` liga um modo de demonstração explícito                                    | LPC-17                                |
 | D15 | Analytics                    | Vercel (sem cookies) sempre; GA4 só após consentimento; eventos por um ouvinte único              | LPC-26                                |
 | D16 | Layout do wireframe          | Estrutura do wireframe da LPC-3; textos revisados, sem ícones de diagnóstico                      | LPC-3                                 |
+| D17 | Domínio                      | Subdomínio `dra-helena-vasconcelos.vercel.app`, sem domínio próprio                               | LPC-25                                |
 
 ## Ordem de execução
 
@@ -68,10 +69,10 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | 22    | LPC-23 | Revisar conteúdo contra a Resolução CFM 2.336/2023           | 6 · Qualidade         | Fases 3 e 4            | ✅   |
 | 23    | LPC-26 | GA4 e Vercel Analytics com eventos de conversão              | 6 · Qualidade         | LPC-24, LPC-18, LPC-16 | ✅   |
 | 24    | LPC-22 | Otimizar imagens e fontes até Lighthouse ≥ 90                | 6 · Qualidade         | LPC-23, LPC-26         | ✅   |
-| 25    | LPC-7  | Vercel com preview por PR e variáveis de ambiente            | 7 · Publicação        | Fases 3 a 6            | ⬜   |
-| 26    | LPC-25 | Configurar domínio e DNS                                     | 7 · Publicação        | LPC-7                  | ⬜   |
+| 25    | LPC-7  | Vercel com preview por PR e variáveis de ambiente            | 7 · Publicação        | Fases 3 a 6            | ✅   |
+| 26    | LPC-25 | Configurar domínio e DNS                                     | 7 · Publicação        | LPC-7                  | ✅   |
 | 27    | LPC-27 | QA cross-browser e revisão de acessibilidade                 | 7 · Publicação        | LPC-25                 | 🟡   |
-| 28    | LPC-28 | Handoff: README, acessos e case de portfólio                 | 7 · Publicação        | LPC-27                 | 🟡   |
+| 28    | LPC-28 | Handoff: README, acessos e case de portfólio                 | 7 · Publicação        | LPC-27                 | ✅   |
 
 **Por que esta ordem**
 
@@ -88,26 +89,16 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 - **LPC-19 por último na fase 4:** o bloco de agendamento junta o WhatsApp (LPC-18) e o link para o
   formulário (LPC-16).
 
-## Situação por task (2026-10-26)
+## Situação por task (2026-10-28)
 
-Tudo o que não depende da publicação está implementado e mesclado na `develop`, uma branch
-`feature/lpc-*` por task. O que falta está abaixo.
+O site está publicado em https://dra-helena-vasconcelos.vercel.app (release `v0.3.0`). Cada task foi feita numa branch
+`feature/lpc-*` mesclada na `develop`. O que falta está abaixo.
 
 ### Pendentes
 
-**LPC-7 — Vercel** ⬜ · Importar o repositório, configurar previews por PR e cadastrar as variáveis do
-`.env.example` (`NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_SITE_URL`, Resend ou `CONTACT_SIMULATE`,
-GA4 opcional). Os previews da Vercel já saem com `noindex`, como todo o site (D7).
-
-**LPC-25 — Domínio e DNS** ⬜ · Subdomínio de portfólio com HTTPS e redirect www/apex;
-`NEXT_PUBLIC_SITE_URL` apontando para ele, para o canonical e o sitemap.
-
-**LPC-27 — QA** 🟡 · A rodada pré-deploy está em `docs/quality/qa.md` (axe com 0 violações,
-teclado, formulário). Faltam navegadores (Safari, Firefox, Edge), iPhone e Android reais e leitor de
-tela, na URL publicada.
-
-**LPC-28 — Handoff** 🟡 · README completo e rascunho do case em `docs/case/estudo-de-caso.md`.
-Faltam os números de Lighthouse da URL publicada e a lista final de acessos.
+**LPC-27 — QA** 🟡 · Rodadas local e na URL publicada em `docs/quality/qa.md` (axe com 0
+violações, Lighthouse, teclado, formulário). Faltam Safari, Firefox e Edge, iPhone e Android reais e
+leitor de tela: testes manuais, em dispositivos.
 
 **LPC-3 — Referências e wireframe** 🟡 · O wireframe mobile-first (celular, tablet e desktop, com
 anotações e estados) foi gerado no Claude Design a partir de
@@ -142,3 +133,6 @@ repositório).
 | LPC-23 | Revisão CFM (`docs/quality/revisao-cfm.md`) e checagem automática da copy              |
 | LPC-24 | `/politica-de-privacidade`, banner de cookies e preferências no rodapé                 |
 | LPC-26 | Vercel Analytics, Speed Insights, GA4 com consentimento e eventos de conversão         |
+| LPC-7  | Projeto `dra-helena-vasconcelos` na Vercel, ligado ao GitHub, com previews e variáveis |
+| LPC-25 | Subdomínio `.vercel.app` com HTTPS (D17)                                               |
+| LPC-28 | README com deploy e acessos; case com os números da URL publicada                      |
