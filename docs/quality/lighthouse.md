@@ -38,6 +38,29 @@ o modelo simulado do Lighthouse passa a tratá-los como dependências do LCP, em
 Com estrangulamento aplicado de verdade (`--throttling-method=devtools`), o LCP é 0,8 s. O número
 definitivo deve ser medido na URL publicada (LPC-28).
 
+## Com as fotos do Pexels (2026-10-28)
+
+As fotos (decisão D12) entraram depois da medição acima. Nova rodada nas mesmas condições, três
+execuções simuladas e uma com estrangulamento aplicado:
+
+| Cenário                             | Performance | Acessibilidade | Boas práticas | SEO  | LCP       | CLS |
+| ----------------------------------- | ----------- | -------------- | ------------- | ---- | --------- | --- |
+| Home, estrangulamento simulado (3×) | **91–92**   | **100**        | **100**       | 69 † | 3,3–3,5 s | 0   |
+| Home, estrangulamento aplicado      | **99**      | **100**        | **100**       | 69 † | 1,5 s     | 0   |
+
+† Só a auditoria `is-crawlable` reprova, pelo `noindex` do portfólio (D7).
+
+- **O LCP continua sendo o título do hero**, não a foto: o valor observado no trace é 39 ms (igual
+  ao FCP). A alta na estimativa simulada vem de o simulador passar a contar a foto do hero (68 KiB
+  no celular) como dependência do LCP, o mesmo efeito descrito na seção anterior.
+- **`priority` trocado por `loading="eager"`** na foto do hero: o `priority` está depreciado no
+  Next.js 16, e a documentação indica `loading="eager"` quando a imagem está acima da dobra mas não
+  é o elemento de LCP. Não houve diferença medida entre os dois.
+- **`sizes` do retrato do "Sobre"** corrigido para `min(100vw, 24rem)` no celular, onde ele é
+  limitado a 24rem. A auditoria de imagens responsivas ainda aponta 34 KiB, por causa do recorte
+  4:5 de uma foto 3:4.
+- O `next/image` entrega as fotos em WebP/AVIF; o total transferido na primeira visita é 527 KiB.
+
 ## Oportunidades restantes
 
 - **JavaScript não usado (~70 KB):** principalmente o formulário (React Hook Form + Zod) e o Radix,

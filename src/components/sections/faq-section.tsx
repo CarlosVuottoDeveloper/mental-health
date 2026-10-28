@@ -6,7 +6,6 @@ import {
   AccordionTrigger,
   Container,
   Heading,
-  SectionLabel,
   Tabs,
   TabsContent,
   TabsList,
@@ -22,7 +21,6 @@ export type FaqCategory = {
 
 export type FaqSectionProps = {
   id?: string;
-  label: string;
   title: string;
   /** With a single category the tabs are omitted and the questions render as one list. */
   categories: FaqCategory[];
@@ -41,16 +39,15 @@ function FaqAccordion({ category }: { category: FaqCategory }) {
   );
 }
 
-export function FaqSection({ id, label, title, categories }: FaqSectionProps) {
+export function FaqSection({ id, title, categories }: FaqSectionProps) {
   const [first] = categories;
 
   return (
     <section id={id} className="scroll-mt-20 py-section">
-      <Container className="flex max-w-3xl flex-col items-center gap-10">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <SectionLabel>{label}</SectionLabel>
-          <Heading size="lg">{title}</Heading>
-        </div>
+      <Container className="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
+        <Heading size="lg" className="md:sticky md:top-28 md:self-start">
+          {title}
+        </Heading>
 
         {categories.length === 1 && first ? (
           <div className="w-full">

@@ -109,19 +109,21 @@ publicada.
 
 ## D12 — Fotos
 
-**Decisão:** não usar fotos de banco de imagens com pessoas identificáveis representando a Dra.
-Helena. As áreas de foto (hero, retrato do "Sobre", consultório, fachada) usam os placeholders em
-gradiente do design system até a escolha manual de fotos de ambiente (consultório, luz natural,
-plantas), com créditos registrados no README.
+**Decisão:** fotos do **Pexels** (licença livre, sem exigência de crédito), sem nenhuma pessoa
+identificável representando a Dra. Helena. O retrato do "Sobre" mostra o consultório (poltrona,
+janela e plantas), e a única foto com pessoa é um detalhe de mão anotando num caderno, sem rosto. O
+hero usa uma sala com parede de plantas, que conversa com a paleta sálvia, e a fachada é um prédio
+de São Paulo. Os créditos ficam no README.
 
 **Por quê:**
 
 - Apresentar o modelo de uma foto de banco como psiquiatra, num contexto de saúde mental, cria uma
-  associação falsa com uma pessoa real.
-- O Unsplash bloqueia acesso automatizado, e as fotos livres encontradas no Wikimedia Commons não
-  seguem a direção de arte. A curadoria das fotos fica como trabalho manual.
-- Os componentes já aceitam `src` e `alt`, então trocar o placeholder pela foto é só editar
-  `src/content/landing.tsx`.
+  associação falsa com uma pessoa real, e a licença do Pexels não permite sugerir que as pessoas das
+  fotos endossam o serviço.
+- Também ficaram de fora cenas de "paciente em sofrimento" (mão na cabeça, choro), comuns nos
+  bancos de imagem: reforçam estigma e contrariam o tom da página.
+- Com a foto no hero, o degradê sobre a imagem ficou mais escuro para manter todos os textos acima
+  de 4,5:1 de contraste, medido sobre os pixels mais claros atrás de cada texto.
 
 ## D13 — Mapa sem cookies de terceiros
 
@@ -156,3 +158,31 @@ cliques, com a origem tirada do `data-cta` ou da seção do link.
 de privacidade explica; o GA4 usa cookies e por isso depende do aceite (LPC-24). O ouvinte único
 evita espalhar código de rastreamento pelos componentes e garante que nenhum dado pessoal entra nos
 eventos.
+
+## D16 — Layout a partir do wireframe da LPC-3
+
+**Decisão:** o layout segue o wireframe de baixa fidelidade gerado no Claude Design a partir do
+prompt em `docs/design/prompt-wireframe-claude-design.md` (imagens em `docs/design/wireframe/`). Mudou a estrutura, não a identidade
+visual (D1):
+
+- Hero em uma coluna, na ordem de leitura: selo, título, descrição, CTAs e identificação
+  profissional.
+- "Sobre" com o retrato à esquerda; o rótulo "Sobre a Dra. Helena" passa a ser o h2 da seção e a
+  frase grande, um parágrafo de destaque.
+- Rótulos de seção só no "Sobre"; nas demais, o título já diz o que a seção é.
+- Atendimento em quatro colunas, FAQ em duas colunas, cards "Presencial" e "Online" com o mesmo
+  peso, e faixas de fundo em Especialidades e Localização.
+- "Como funciona o acompanhamento" deixa de ser um bloco escuro: o escuro fica só na faixa de
+  agendamento, a ação principal da página.
+- Menu do celular em tela cheia, CTA do header sempre preenchido, botões do banner de cookies com o
+  mesmo estilo, erros de formulário com ícone e texto, sucesso com foco no título e link para o
+  WhatsApp, aviso de emergência em caixa com borda e áreas de toque de 44 px.
+
+**Onde o site não segue o wireframe, e por quê:**
+
+- **Textos:** o wireframe reescreveu parte da copy e usa marcadores como `[instituição]`. O site
+  mantém os textos revisados contra a CFM (LPC-23).
+- **Ícones nas especialidades:** o wireframe desenha um ícone em cada card. Ícone para diagnóstico
+  psiquiátrico tende a ser reducionista ou estigmatizante; os cards ficam só com texto.
+- **Faixa pixelada** do bloco de agendamento mantida: é o único gesto gráfico da marca (D1) e não
+  aparece num wireframe em escala de cinza.

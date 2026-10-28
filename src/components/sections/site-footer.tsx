@@ -61,12 +61,13 @@ export function SiteFooter({
                 <h2 className="mb-4 text-body-sm font-medium">
                   {column.title}
                 </h2>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col md:gap-2.5">
                   {column.links.map((link) => (
                     <li key={link.label}>
+                      {/* 44 px tall on touch screens, compact list from md up. */}
                       <a
                         href={link.href}
-                        className="rounded-xs text-body-sm text-foreground-muted transition-colors hover:text-foreground"
+                        className="inline-flex min-h-11 items-center rounded-xs text-body-sm text-foreground-muted transition-colors hover:text-foreground md:min-h-0"
                       >
                         {link.label}
                       </a>
@@ -79,19 +80,23 @@ export function SiteFooter({
         </div>
 
         <div className="flex flex-col gap-6 border-t border-border pt-6">
-          <Text size="caption" tone="muted" className="max-w-3xl">
+          {/* Emergency guidance gets its own frame so it is never skimmed past. */}
+          <Text
+            size="sm"
+            className="max-w-3xl rounded-lg border-2 border-foreground p-4 md:p-5"
+          >
             {disclaimer}
           </Text>
           <div className="flex flex-col gap-4 text-caption text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
             <p>
               {copyright} · {credit}
             </p>
-            <ul className="flex gap-6">
+            <ul className="flex flex-wrap gap-x-6">
               {legal.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="rounded-xs hover:text-foreground"
+                    className="inline-flex min-h-11 items-center rounded-xs hover:text-foreground md:min-h-0"
                   >
                     {link.label}
                   </a>

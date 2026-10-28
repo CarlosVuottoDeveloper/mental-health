@@ -84,14 +84,17 @@ Antes de publicar qualquer texto novo, confira as regras da Resolução CFM nº 
 
 ### Fotos
 
-As áreas de foto usam placeholders em gradiente (decisão D12). Para trocar por uma foto:
+As fotos ficam em `public/images/` e vêm do Pexels (decisão D12). O `next/image` gera as versões
+WebP/AVIF em cada tamanho, então o arquivo original pode ser JPEG. Para trocar uma foto:
 
-1. Salve a imagem em `public/images/` (de preferência WebP).
+1. Salve a imagem em `public/images/`, com no máximo ~1920 px no lado maior.
 2. Em `src/content/landing.tsx`, preencha `src` e `alt` do item: `heroContent.image`,
    `aboutContent.portrait`, `aboutContent.media`, `locationContent.facade`.
 3. Registre o crédito na seção [Créditos](#créditos).
 
-Não use fotos de pacientes nem de pessoas identificáveis representando a médica.
+Não use fotos de pacientes nem de pessoas identificáveis representando a médica. O texto
+branco do hero fica sobre um degradê escuro; se trocar a foto, confira o contraste do menu e do
+título.
 
 ## Design system
 
@@ -123,7 +126,7 @@ docs/                   # descoberta, planejamento, qualidade e estudo de caso
 
 ## Qualidade
 
-- **Testes:** 139 testes (componentes, conteúdo, formulário, API, tokens, contraste, analytics).
+- **Testes:** 143 testes (componentes, conteúdo, formulário, API, tokens, contraste, analytics).
 - **Lighthouse (mobile):** ≥ 90 nas quatro categorias. Detalhes em
   [`docs/quality/lighthouse.md`](docs/quality/lighthouse.md).
 - **Acessibilidade:** 0 violações WCAG 2.2 AA no axe. Detalhes em
@@ -170,9 +173,10 @@ O deploy é feito na Vercel (task LPC-7), com preview por pull request. Passos:
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | [`docs/case/estudo-de-caso.md`](docs/case/estudo-de-caso.md)                                             | Case de portfólio                        |
 | [`docs/planning/plano-de-implementacao.md`](docs/planning/plano-de-implementacao.md)                     | As 28 tasks do Jira em ordem, com status |
-| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D15 e justificativas         |
+| [`docs/discovery/decisoes-do-projeto.md`](docs/discovery/decisoes-do-projeto.md)                         | Decisões D1–D16 e justificativas         |
 | [`docs/discovery/LPC-2-destino-secao-depoimentos.md`](docs/discovery/LPC-2-destino-secao-depoimentos.md) | Por que não há depoimentos               |
 | [`docs/quality/`](docs/quality)                                                                          | Revisão CFM, Lighthouse e QA             |
+| [`docs/design/`](docs/design)                                                                            | Prompt e imagens do wireframe (LPC-3)    |
 
 ## Créditos
 
@@ -182,4 +186,12 @@ O deploy é feito na Vercel (task LPC-7), com preview por pull request. Passos:
 - **Ícones:** [Lucide](https://lucide.dev) (ISC); ícone do WhatsApp do
   [Simple Icons](https://simpleicons.org) (CC0).
 - **Mapa:** © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright).
-- **Fotos:** ainda não há; registre aqui autor e fonte de cada foto adicionada.
+- **Fotos:** [Pexels](https://www.pexels.com/license/) (uso livre, sem exigência de crédito). Cada
+  página abaixo mostra o autor:
+  - Hero: [poltrona e parede de plantas](https://www.pexels.com/photo/6585744/)
+  - Sobre: [poltrona junto à janela](https://www.pexels.com/photo/16269026/)
+  - Detalhes: [sombra de folhas em ocre](https://www.pexels.com/photo/6423451/) (Allec Gomes),
+    [mão anotando](https://www.pexels.com/photo/8430301/) (Kampus Production) e
+    [sombra de planta na parede](https://www.pexels.com/photo/4207776/)
+  - Fachada: [varandas em São Paulo](https://www.pexels.com/photo/34147115/) (Rafaela Gonçalves
+    Sanches)

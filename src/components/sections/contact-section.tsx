@@ -14,7 +14,6 @@ import {
   Field,
   Heading,
   Input,
-  SectionLabel,
   Text,
 } from "@/components/ui";
 import {
@@ -27,7 +26,6 @@ import { trackEvent } from "@/lib/analytics";
 
 export type ContactSectionProps = {
   id?: string;
-  label: string;
   title: string;
   description: string;
   privacyHref: string;
@@ -39,7 +37,6 @@ type Status = "idle" | "success" | "error";
 
 export function ContactSection({
   id,
-  label,
   title,
   description,
   privacyHref,
@@ -50,9 +47,10 @@ export function ContactSection({
     <section id={id} className="scroll-mt-20 py-section">
       <Container className="grid gap-10 md:grid-cols-[1fr_2fr]">
         <div className="flex flex-col gap-4">
-          <SectionLabel>{label}</SectionLabel>
           <Heading size="lg">{title}</Heading>
-          <Text tone="muted">{description}</Text>
+          <Text size="lg" tone="muted" className="max-w-[40ch]">
+            {description}
+          </Text>
         </div>
         <ContactForm
           privacyHref={privacyHref}
@@ -113,18 +111,35 @@ function ContactForm({
 
   if (status === "success") {
     return (
+      // Replaces the form in place; focus moves to the title so keyboard and
+      // screen reader users land on the confirmation.
       <div
         role="status"
-        className="flex flex-col items-start gap-4 rounded-xl bg-surface-sunken p-6 md:p-8"
+        className="flex flex-col items-start gap-4 rounded-xl border border-border-strong p-6 md:p-8"
       >
         <CircleCheck aria-hidden className="size-8" strokeWidth={1.5} />
-        <Heading as="h3" size="sm">
+        <Heading
+          as="h3"
+          size="sm"
+          tabIndex={-1}
+          ref={(heading) => heading?.focus()}
+          className="rounded-xs"
+        >
           Retorno solicitado
         </Heading>
         <Text tone="muted">
-          Vamos entrar em contato pelo telefone ou e-mail informado, normalmente
-          até o fim do dia útil.
+          Vamos entrar em contato no período que você escolheu, pelo telefone ou
+          e-mail informado.
         </Text>
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="formulario-sucesso"
+          className="rounded-xs text-body-md font-medium underline underline-offset-4"
+        >
+          Prefere falar agora? Chamar no WhatsApp
+        </a>
       </div>
     );
   }
@@ -134,7 +149,7 @@ function ContactForm({
       noValidate
       onFocusCapture={() => setStartedAt((time) => time ?? Date.now())}
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-6 rounded-xl bg-surface-sunken p-6 md:p-8"
+      className="flex flex-col gap-6"
     >
       <Field id="contato-nome" label="Nome" error={errors.name?.message}>
         <Input
@@ -171,21 +186,23 @@ function ContactForm({
         </Field>
       </div>
 
-      <ChoiceGroup
-        id="contato-preferencia"
-        legend="Preferência de atendimento"
-        options={[...preferenceOptions]}
-        error={errors.preference?.message}
-        {...register("preference")}
-      />
+      <div className="grid gap-6 lg:grid-cols-2">
+        <ChoiceGroup
+          id="contato-preferencia"
+          legend="Preferência de atendimento"
+          options={[...preferenceOptions]}
+          error={errors.preference?.message}
+          {...register("preference")}
+        />
 
-      <ChoiceGroup
-        id="contato-periodo"
-        legend="Melhor período para retorno"
-        options={[...periodOptions]}
-        error={errors.period?.message}
-        {...register("period")}
-      />
+        <ChoiceGroup
+          id="contato-periodo"
+          legend="Melhor período para retorno"
+          options={[...periodOptions]}
+          error={errors.period?.message}
+          {...register("period")}
+        />
+      </div>
 
       {/* Honeypot: hidden from people and assistive tech, filled by bots. */}
       <div

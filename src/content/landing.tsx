@@ -97,6 +97,10 @@ export const heroContent: Omit<HeroProps, "header"> = {
     href: `/#${anchors.about}`,
   },
   credentials: credentialsLine,
+  image: {
+    src: "/images/hero-consultorio.jpg",
+    alt: "Poltrona e pufe cinza diante de uma parede de plantas, em uma sala clara",
+  },
 };
 
 // LPC-10, built from the LPC-1 "Sobre" text. Institutions are fictitious on purpose.
@@ -125,10 +129,10 @@ export const aboutContent: AboutSectionProps = {
     { label: "Residência médica", value: "Psiquiatria · Hospital Fictício" },
     { label: "Atuação", value: "Mais de 10 anos, atendimento de adultos" },
   ],
-  // No stock photos of identifiable people as the doctor (decision D12).
+  // Pexels photos without an identifiable person standing in for the doctor (decision D12).
   portrait: {
-    placeholder: "sage",
-    alt: "Consultório da Dra. Helena Vasconcelos",
+    src: "/images/sobre-poltrona.jpg",
+    alt: "Poltrona bege ao lado de uma janela com plantas, no consultório",
   },
   socials: [
     { network: "instagram", href: "https://instagram.com" },
@@ -139,16 +143,18 @@ export const aboutContent: AboutSectionProps = {
     href: `/#${anchors.care}`,
   },
   media: [
-    { placeholder: "sun" },
-    { placeholder: "sage" },
-    { placeholder: "blush" },
+    { src: "/images/detalhe-folhas-ocre.jpg", alt: "" },
+    {
+      src: "/images/detalhe-anotacoes.jpg",
+      alt: "Mão anotando em um caderno durante uma conversa",
+    },
+    { src: "/images/detalhe-sombra-folhas.jpg", alt: "" },
   ],
 };
 
 // LPC-11: how each condition shows up in daily life, never the clinical definition.
 export const specialtiesContent: SpecialtiesSectionProps = {
   id: anchors.specialties,
-  label: "Especialidades",
   title: "Como posso ajudar",
   description:
     "Atendimento a adultos, a partir de 18 anos. Se você se reconhece em alguma destas situações, uma conversa pode ajudar a entender o que está acontecendo.",
@@ -189,7 +195,6 @@ export const specialtiesContent: SpecialtiesSectionProps = {
 // LPC-12: the care process, not results. Durations follow decision D3.
 export const benefitsContent: BenefitsSectionProps = {
   id: anchors.benefits,
-  label: "Atendimento",
   title: "Como é ser atendido aqui",
   items: [
     {
@@ -222,7 +227,6 @@ export const benefitsContent: BenefitsSectionProps = {
 // LPC-14, with the base texts recorded in LPC-2.
 export const careStepsContent: CareStepsSectionProps = {
   id: anchors.care,
-  label: "Acompanhamento",
   title: "Como funciona o acompanhamento",
   description:
     "Cada pessoa tem seu tempo. O tratamento é construído em etapas, sempre com você participando das decisões.",
@@ -250,7 +254,6 @@ export const careStepsContent: CareStepsSectionProps = {
 // written in the project and checked against the CFM checklist (decision D8).
 export const faqContent: FaqSectionProps = {
   id: anchors.faq,
-  label: "Dúvidas",
   title: "Perguntas frequentes",
   categories: [
     {
@@ -307,7 +310,6 @@ export const faqContent: FaqSectionProps = {
 // The address is fictitious, so the map shows the area around Ana Rosa station.
 export const locationContent: LocationSectionProps = {
   id: anchors.location,
-  label: "Localização",
   title: "Presencial ou online",
   description:
     "Escolha o formato que funciona melhor para você. O cuidado e o tempo de consulta são os mesmos.",
@@ -338,7 +340,10 @@ export const locationContent: LocationSectionProps = {
     caption:
       "Região da estação Ana Rosa. O endereço do consultório é fictício (projeto de portfólio). Mapa © colaboradores do OpenStreetMap.",
   },
-  facade: { placeholder: "blush", alt: "Fachada do prédio do consultório" },
+  facade: {
+    src: "/images/fachada.jpg",
+    alt: "Fachada de um prédio residencial com varandas e plantas, em São Paulo",
+  },
 };
 
 // Booking block (LPC-19): WhatsApp only, no calendar integration.
@@ -357,7 +362,6 @@ export const ctaContent: CtaBannerProps = {
 // LPC-16: minimal data only (LGPD art. 11).
 export const contactContent: Omit<ContactSectionProps, "endpoint"> = {
   id: anchors.contact,
-  label: "Contato",
   title: "Prefere que a gente entre em contato?",
   description:
     "Deixe seu nome e um telefone e escolha um período para o retorno. Não pedimos o motivo da consulta: essa conversa fica para o atendimento.",

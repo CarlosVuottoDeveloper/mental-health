@@ -41,7 +41,7 @@ consentimento.
 
 **Conflitos entre tasks resolvidos e registrados.** O quadro tinha 28 tasks com divergências (duas
 paletas, dois títulos de hero, durações de consulta diferentes). Cada uma virou uma decisão
-numerada, com justificativa, em `docs/discovery/decisoes-do-projeto.md` (D1 a D15).
+numerada, com justificativa, em `docs/discovery/decisoes-do-projeto.md` (D1 a D16).
 
 ## Design
 
@@ -52,6 +52,13 @@ aparece uma vez na página.
 
 Tudo está documentado no Storybook: tokens com contraste verificado em teste, styleguide (cores,
 tipografia, layout, movimento, voz e conteúdo) e cada componente com seus estados.
+
+A estrutura da página veio de um wireframe de baixa fidelidade, mobile-first, gerado no Claude
+Design a partir de um prompt com a ordem das seções, os textos reais, as restrições da CFM e oito
+anotações de comportamento (`docs/design/`). O site seguiu o wireframe com três desvios
+deliberados: manteve os textos já revisados, não pôs ícones nos diagnósticos e preservou a borda
+pixelada da marca (D16). As fotos são do Pexels, sem nenhuma pessoa identificável no papel da
+médica (D12).
 
 ## Engenharia
 
@@ -65,23 +72,23 @@ tipografia, layout, movimento, voz e conteúdo) e cada componente com seus estad
   `FAQPage`, sitemap e robots. O site sai com `noindex` enquanto for portfólio.
 - **Conversões:** um único ouvinte de cliques registra WhatsApp, telefone e rota, identificando
   qual CTA converteu, sem enviar dado pessoal.
-- **Processo:** Gitflow, uma branch por task do Jira, hooks de lint e testes, 139 testes
+- **Processo:** Gitflow, uma branch por task do Jira, hooks de lint e testes, 143 testes
   automatizados, incluindo uma checagem do texto contra as regras da CFM.
 
 ## Resultados (medição local, pré-deploy)
 
-| Métrica                           | Resultado                                                                             |
-| --------------------------------- | ------------------------------------------------------------------------------------- |
-| Lighthouse mobile                 | Performance 95, Acessibilidade 100, Boas práticas 100, SEO 100 (com indexação ligada) |
-| LCP com estrangulamento aplicado  | 0,8 s                                                                                 |
-| Acessibilidade (axe, WCAG 2.2 AA) | 0 violações                                                                           |
-| Testes automatizados              | 139                                                                                   |
+| Métrica                                  | Resultado                                                                             |
+| ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| Lighthouse mobile                        | Performance 92, Acessibilidade 100, Boas práticas 100, SEO 100 (com indexação ligada) |
+| Performance com estrangulamento aplicado | 99 (LCP 1,5 s)                                                                        |
+| Acessibilidade (axe, WCAG 2.2 AA)        | 0 violações                                                                           |
+| Testes automatizados                     | 143                                                                                   |
 
 _A completar após o deploy: Lighthouse na URL publicada e QA em dispositivos reais._
 
 ## O que eu faria diferente num projeto real
 
-- Fotografia própria do consultório, em vez de placeholders.
+- Fotografia própria do consultório e da profissional, em vez de fotos de banco de imagens.
 - Validação jurídica da política de privacidade e revisão da copy com a profissional.
 - Um limite de envios por IP compartilhado entre instâncias (por exemplo, Redis), se o tráfego
   justificar.

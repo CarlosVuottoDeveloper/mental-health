@@ -121,6 +121,23 @@ describe("SiteHeader", () => {
     expect(document.getElementById("site-menu")).not.toBeInTheDocument();
   });
 
+  it("locks page scroll and turns solid while the full-screen menu is open", async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <SiteHeader {...props} overlayTargetId="inicio" />,
+    );
+    await user.click(screen.getByRole("button", { name: "Abrir menu" }));
+
+    const header = container.querySelector("header");
+    expect(header).toHaveClass("bg-background");
+    // A backdrop filter would clip the fixed menu to the header's box.
+    expect(header).not.toHaveClass("backdrop-blur-md");
+    expect(document.documentElement.style.overflow).toBe("hidden");
+
+    await user.keyboard("{Escape}");
+    expect(document.documentElement.style.overflow).toBe("");
+  });
+
   it("is solid by default", () => {
     const { container } = render(<SiteHeader {...props} />);
     expect(container.querySelector("header")).toHaveClass("bg-background/95");
@@ -148,6 +165,18 @@ describe("LandingPage", () => {
     ]) {
       expect(screen.getByRole("heading", { name })).toBeInTheDocument();
     }
+  });
+
+  it("uses the about label as the section h2, with the statement as a paragraph", () => {
+    render(<LandingPage />);
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Sobre a Dra. Helena" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", {
+        name: /Um bom tratamento nasce de uma relação de confiança/,
+      }),
+    ).not.toBeInTheDocument();
   });
 
   it("shows CRM and RQE in the hero, the about section and the footer", () => {
