@@ -162,7 +162,7 @@ eventos.
 ## D16 — Layout a partir do wireframe da LPC-3
 
 **Decisão:** o layout segue o wireframe de baixa fidelidade gerado no Claude Design a partir do
-prompt em `docs/design/prompt-wireframe-claude-design.md`. Mudou a estrutura, não a identidade
+prompt em `docs/design/prompt-wireframe-claude-design.md` (imagens em `docs/design/wireframe/`). Mudou a estrutura, não a identidade
 visual (D1):
 
 - Hero em uma coluna, na ordem de leitura: selo, título, descrição, CTAs e identificação

@@ -111,7 +111,8 @@ Faltam os números de Lighthouse da URL publicada e a lista final de acessos.
 
 **LPC-3 — Referências e wireframe** 🟡 · O wireframe mobile-first (celular, tablet e desktop, com
 anotações e estados) foi gerado no Claude Design a partir de
-`docs/design/prompt-wireframe-claude-design.md`, e o layout do site foi ajustado a ele (D16). Falta o
+`docs/design/prompt-wireframe-claude-design.md` (imagens em `docs/design/wireframe/`), e o layout
+do site foi ajustado a ele (D16). Falta o
 levantamento de 5 a 8 referências.
 
 **LPC-5 — Repositório** 🟡 · Falta só a proteção da branch `main` no GitHub (configuração do
