@@ -49,7 +49,7 @@ uma está em [`docs/discovery/decisoes-do-projeto.md`](../discovery/decisoes-do-
 | 2     | LPC-2  | Definir com a cliente o destino da seção de depoimentos      | 0 · Descoberta        | LPC-1                  | ✅   |
 | 3     | LPC-3  | Referências e wireframe mobile-first                         | 1 · Design            | LPC-1, LPC-2           | 🟡   |
 | 4     | LPC-4  | Design system e layouts mobile, tablet e desktop no Figma    | 1 · Design            | LPC-3                  | ✅   |
-| 5     | LPC-5  | Criar repositório com Next.js 15 + TypeScript                | 2 · Fundação          | —                      | 🟡   |
+| 5     | LPC-5  | Criar repositório com Next.js 15 + TypeScript                | 2 · Fundação          | —                      | ✅   |
 | 6     | LPC-6  | Tailwind com tokens, ESLint, Prettier e Husky                | 2 · Fundação          | LPC-4, LPC-5           | ✅   |
 | 7     | LPC-8  | Header, navegação e CTA fixo                                 | 3 · Seções            | LPC-6                  | ✅   |
 | 8     | LPC-9  | Hero com proposta de valor e CTA principal                   | 3 · Seções            | LPC-8                  | ✅   |
@@ -106,13 +106,11 @@ anotações e estados) foi gerado no Claude Design a partir de
 do site foi ajustado a ele (D16). Falta o
 levantamento de 5 a 8 referências.
 
-**LPC-5 — Repositório** 🟡 · Falta só a proteção da branch `main` no GitHub (configuração do
-repositório).
-
 ### Concluídas no código
 
 | Task   | Onde está                                                                              |
 | ------ | -------------------------------------------------------------------------------------- |
+| LPC-5  | Next.js 16 + TypeScript strict; CI no GitHub Actions e regra de proteção da `main`     |
 | LPC-4  | Design system em `src/styles/tokens.css`, `src/components/ui` e Storybook (D1)         |
 | LPC-6  | Tailwind v4, ESLint, Prettier, Husky + lint-staged, `next/font`                        |
 | LPC-8  | `SiteHeader`: fixo, transparente sobre o hero, menu com foco preso e Esc, scroll suave |
