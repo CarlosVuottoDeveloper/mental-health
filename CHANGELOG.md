@@ -6,6 +6,8 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+## [0.3.2] - 2026-10-28
+
 ### Alterado
 
 - Faixa de imagens do "Sobre" com fotos nos tons da paleta (oliveira, chá e livros, parede de
@@ -95,7 +97,8 @@ LPC que não dependem da publicação.
   - styleguide e documentação dos componentes no Storybook 10.
 - Skills de agente em `.agents/`.
 
-[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.1...HEAD
+[Não lançado]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/CarlosVuottoDeveloper/mental-health/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/CarlosVuottoDeveloper/mental-health/releases/tag/v0.2.0
