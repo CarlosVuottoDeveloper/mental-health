@@ -6,6 +6,11 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+### Alterado
+
+- Faixa de imagens do "Sobre" com fotos nos tons da paleta (oliveira, chá e livros, parede de
+  cal), no lugar das sombras em ocre e da foto com azul.
+
 ## [0.3.1] - 2026-10-28
 
 Publicação na Vercel.
